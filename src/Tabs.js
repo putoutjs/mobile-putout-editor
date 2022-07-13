@@ -13,6 +13,8 @@ import {Transform} from './Transform/Transform.js';
 import {Result} from './Result.js';
 import {Source} from './Source/Source.js';
 
+const {stringify} = JSON;
+
 function TabPanel(props) {
     const {
         children,
@@ -56,7 +58,9 @@ export default function FullWidthTabs() {
     const [transform, setTransform] = useState(DefaultTransform);
     const [source, setSource] = useState(DefaultSource);
     const [code, setCode] = useState(DefaultSource);
+    
     const [error, setError] = useState(null);
+    const [info, setInfo] = useState(null);
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -85,12 +89,14 @@ export default function FullWidthTabs() {
                     source={source}
                     setCode={setCode}
                     setError={setError}
+                    setInfo={setInfo}
                 />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Source
                     source={source}
-                    setSource={source}
+                    setSource={setSource}
+                    setError={setError}
                 />
             </TabPanel>
             <TabPanel value={value} index={2}>
@@ -99,6 +105,8 @@ export default function FullWidthTabs() {
                 />
             </TabPanel>
             {error && <Alert severity="error">{String(error)}</Alert> }
+            {info && <Alert severity="info">{String(info)}</Alert> }
         </Box>
     );
 }
+

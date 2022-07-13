@@ -4,26 +4,41 @@ import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
 import tryCatch from 'try-catch';
 
-import putout from 'https://esm.sh/@putout/bundle@1.1.5?dev';
-import * as pluginPutout from 'https://esm.sh/@putout/bundle@1.1.5/plugin-putout?dev';
+import putout from 'https://esm.sh/@putout/bundle';
+import pluginPutout from 'https://esm.sh/@putout/bundle/plugin-putout?dev';
 import pluginDeclare from 'https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle';
+import pluginConvertESMToCommonJS from 'https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle';
 
-const createTransform = (transform) => {
+const createTransform = (codeTransform, setInfo) => {
     const exports = {};
     const module = {
         exports,
     };
-    const fn = Function('require', 'module', 'exports', transform);
+    
+    const {code} = putout(codeTransform, {
+        plugins: [
+            ['declare', pluginDeclare],
+            ['putout', pluginPutout],
+            ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
+        ],
+    });
+    
+    setInfo('');
+    
+    const console = {
+        log: (a) => setInfo(a),
+    };
+    const fn = Function('require', 'module', 'exports', 'console', code);
     const require = () => putout;
     
-    fn(require, module, exports);
+    fn(require, module, exports, console);
     
     return exports;
 };
 
-export function Transform({source, transform, setCode, setTransform, setError}) {
+export function Transform({source, transform, setCode, setTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
-        const [errorTransform, pluginTransform] = tryCatch(createTransform, value);
+        const [errorTransform, pluginTransform] = tryCatch(createTransform, value, setInfo);
         
         if (errorTransform) {
             setError(errorTransform);
@@ -32,8 +47,6 @@ export function Transform({source, transform, setCode, setTransform, setError}) 
         
         const [error, result] = tryCatch(putout, source, {
             plugins: [
-                ['declare', pluginDeclare],
-                ['putout', pluginPutout],
                 ['transform', pluginTransform],
             ],
         });
@@ -45,11 +58,9 @@ export function Transform({source, transform, setCode, setTransform, setError}) 
         
         const {code} = result;
         
-        console.log('::::', code);
-        
         setCode(code);
         setTransform(value);
-    }, [setCode]);
+    }, [setCode, setTransform, setError, setInfo]);
     
     return (
         <CodeMirror
