@@ -1,15 +1,17 @@
-import {Editor} from './Editor.js';
-import {Result} from './Result.js';
-
-import PropTypes from 'prop-types';
+import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import {Alert} from '@mui/material';
+import PropTypes from 'prop-types';
 import {useState} from 'react';
 
-import DefaultSource from './DefaultSource.js';
+import DefaultSource from './Source/DefaultSource.js';
+import DefaultTransform from './Transform/DefaultTransform.js';
+import {Transform} from './Transform/Transform.js';
+import {Result} from './Result.js';
+import {Source} from './Source/Source.js';
 
 function TabPanel(props) {
     const {
@@ -23,8 +25,8 @@ function TabPanel(props) {
         <div
             role="tabpanel"
             hidden={value !== index}
-            id={`vertical-tabpanel-${index}`}
-            aria-labelledby={`vertical-tab-${index}`}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
             {...other}
         >
             {value === index &&
@@ -44,52 +46,59 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
     return {
-        'id': `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
+        'id': `full-width-tab-${index}`,
+        'aria-controls': `full-width-tabpanel-${index}`,
     };
 }
 
-export default function VerticalTabs() {
+export default function FullWidthTabs() {
     const [value, setValue] = useState(0);
+    const [transform, setTransform] = useState(DefaultTransform);
     const [source, setSource] = useState(DefaultSource);
     const [code, setCode] = useState(DefaultSource);
+    const [error, setError] = useState(null);
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
     
     return (
-        <Box
-            sx={{flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224}}
-        >
-            <Tabs
-                orientation="vertical"
-                variant="fullWidth"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                sx={{borderRight: 1, borderColor: 'divider'}}
-            >
-                <Tab label="Transform" {...a11yProps(0)} />
-                <Tab label="Result" {...a11yProps(1)} />
-                <Tab label="AST" {...a11yProps(2)}/>
-            </Tabs>
-            <TabPanel value={value} index={0} className="App-tab">
-                <Editor
+        <Box sx={{bgcolor: 'background.paper'}}>
+            <AppBar position="static">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                    textColor="inherit"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                >
+                    <Tab label="Transform" {...a11yProps(0)} />
+                    <Tab label="Source" {...a11yProps(1)} />
+                    <Tab label="Result" {...a11yProps(2)} />
+                </Tabs>
+            </AppBar>
+            <TabPanel value={value} index={0}>
+                <Transform
+                    transform={transform}
+                    setTransform={setTransform}
                     source={source}
-                    setSource={setSource}
                     setCode={setCode}
+                    setError={setError}
                 />
             </TabPanel>
-            <TabPanel value={value} index={1} className="App-tab">
+            <TabPanel value={value} index={1}>
+                <Source
+                    source={source}
+                    setSource={source}
+                />
+            </TabPanel>
+            <TabPanel value={value} index={2}>
                 <Result
                     code={code}
                 />
             </TabPanel>
-            <TabPanel value={value} index={2} className="App-tab">
-                <Editor />
-            </TabPanel>
+            {error && <Alert severity="error">{String(error)}</Alert> }
         </Box>
     );
 }
-

@@ -30,7 +30,3 @@
         transform: rotate(360deg);
     }
 }
-
-.App-tab {
-    width: calc(100% - 125px);
-}
