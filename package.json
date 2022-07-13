@@ -3,25 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.0.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@uiw/react-codemirror": "^4.11.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "start": "madrun start",
+    "build": "madrun build",
+    "test": "madrun test",
+    "eject": "madrun eject",
+    "lint": "madrun lint",
+    "fix:lint": "madrun fix:lint"
   },
   "browserslist": {
     "production": [
@@ -34,5 +35,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@putout/plugin-react-hooks": "^4.4.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-putout": "^15.8.0",
+    "madrun": "^9.0.5",
+    "putout": "^26.22.0"
   }
 }

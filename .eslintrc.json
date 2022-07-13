@@ -1,0 +1,15 @@
+{
+    "rules": {
+        "import/no-anonymous-default-export": "off",
+        "react/jsx-curly-brace-presence": ["error", "never"],
+        "react/self-closing-comp": "error"
+    },
+    "extends": [
+        "react-app",
+        "plugin:putout/safe+align",
+        "react-app/jest"
+    ],
+    "plugins": [
+        "putout"
+    ]
+}
