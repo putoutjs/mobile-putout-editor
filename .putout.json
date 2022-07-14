@@ -1,8 +1,9 @@
 {
     "rules": {
         "remove-console": "off",
-        "convert-commonjs-to-esm": "on",
-        "convert-esm-to-commonjs": "off"
+        "convert-commonjs-to-esm": "off",
+        "convert-esm-to-commonjs": "off",
+        "package-json/add-type": "off"
     },
     "plugins": [
         "react-hooks"
