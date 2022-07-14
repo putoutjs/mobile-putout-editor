@@ -16,13 +16,17 @@ const createTransform = async ({value, setInfo, putout}) => {
     
     const pluginPutout = (await import('https://esm.sh/@putout/bundle/plugin-putout')).default;
     const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle')).default;
+    const pluginDeclareBeforeReference = (await import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle')).default;
+    const pluginConvertConstToLet = (await import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle')).default;
     const pluginConvertESMToCommonJS = await import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle');
     
     const {code} = putout(value, {
         plugins: [
             ['declare', pluginDeclare],
+            ['declare-before-reference', pluginDeclareBeforeReference],
             ['putout', pluginPutout],
             ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
+            ['convert-const-to-let', pluginConvertConstToLet],
         ],
     });
     
