@@ -4,18 +4,21 @@ import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
 import tryCatch from 'try-catch';
 
-import putout from 'https://esm.sh/@putout/bundle';
-import pluginPutout from 'https://esm.sh/@putout/bundle/plugin-putout?dev';
-import pluginDeclare from 'https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle';
-import pluginConvertESMToCommonJS from 'https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle';
+import tryToCatch from 'try-to-catch';
 
-const createTransform = (codeTransform, setInfo) => {
+import {useEffect} from 'react';
+
+const createTransform = async ({value, setInfo, putout}) => {
     const exports = {};
     const module = {
         exports,
     };
     
-    const {code} = putout(codeTransform, {
+    const pluginPutout = (await import('https://esm.sh/@putout/bundle/plugin-putout')).default;
+    const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle')).default;
+    const pluginConvertESMToCommonJS = await import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle');
+    
+    const {code} = putout(value, {
         plugins: [
             ['declare', pluginDeclare],
             ['putout', pluginPutout],
@@ -37,8 +40,14 @@ const createTransform = (codeTransform, setInfo) => {
 };
 
 export function Transform({source, transform, setCode, setTransform, setError, setInfo}) {
-    const onChange = useCallback((value) => {
-        const [errorTransform, pluginTransform] = tryCatch(createTransform, value, setInfo);
+    const transformCode = async (value) => {
+        const putout = (await import('https://esm.sh/@putout/bundle')).default;
+        
+        const [errorTransform, pluginTransform] = await tryToCatch(createTransform, {
+            value,
+            setInfo,
+            putout,
+        });
         
         if (errorTransform) {
             setError(errorTransform);
@@ -60,7 +69,16 @@ export function Transform({source, transform, setCode, setTransform, setError, s
         
         setCode(code);
         setTransform(value);
-    }, [setCode, setTransform, setError, setInfo]);
+    };
+    
+    const deps = [
+    
+    ];
+    const onChange = useCallback(transformCode, [source, setCode, setTransform, setError, setInfo]);
+    
+    useEffect(() => {
+        onChange(transform);
+    }, [source, transform, onChange, setCode, setTransform, setError, setInfo]);
     
     return (
         <CodeMirror
