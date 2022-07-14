@@ -1,6 +1,7 @@
 {
   "name": "putout-editor-react",
   "version": "0.1.0",
+  "type": "commonjs",
   "private": true,
   "commitType": "colon",
   "dependencies": {

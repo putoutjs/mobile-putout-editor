@@ -2,7 +2,7 @@ import {run} from 'madrun';
 
 const env = {
     ESLINT_NO_DEV_ERRORS: true,
-}
+};
 
 export default {
     'start': () => [env, 'react-scripts start'],

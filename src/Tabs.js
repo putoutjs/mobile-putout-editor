@@ -10,10 +10,9 @@ import {useState} from 'react';
 import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {Transform} from './Transform/Transform.js';
+import {FinalTransform} from './FinalTransform.js';
 import {Result} from './Result.js';
 import {Source} from './Source/Source.js';
-
-const {stringify} = JSON;
 
 function TabPanel(props) {
     const {
@@ -56,6 +55,7 @@ function a11yProps(index) {
 export default function FullWidthTabs() {
     const [value, setValue] = useState(0);
     const [transform, setTransform] = useState(DefaultTransform);
+    const [finalTransform, setFinalTransform] = useState(DefaultTransform);
     const [source, setSource] = useState(DefaultSource);
     const [code, setCode] = useState(DefaultSource);
     
@@ -79,7 +79,7 @@ export default function FullWidthTabs() {
                 >
                     <Tab label="Transform" {...a11yProps(0)} />
                     <Tab label="Source" {...a11yProps(1)} />
-                    <Tab label="Result" {...a11yProps(2)} />
+                    <Tab label="Final Transform" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -90,18 +90,29 @@ export default function FullWidthTabs() {
                     setCode={setCode}
                     setError={setError}
                     setInfo={setInfo}
+                    setFinalTransform={setFinalTransform}
                 />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Source
                     source={source}
+                    transform={transform}
                     setSource={setSource}
                     setError={setError}
+                    setTransform={setTransform}
+                    setCode={setCode}
+                    setInfo={setInfo}
+                    setFinalTransform={setFinalTransform}
+                />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <Result
+                    code={code}
                 />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Result
-                    code={code}
+                <FinalTransform
+                    finalTransform={finalTransform}
                 />
             </TabPanel>
             {error && <Alert severity="error">{String(error)}</Alert> }

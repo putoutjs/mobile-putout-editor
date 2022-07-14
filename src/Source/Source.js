@@ -2,21 +2,21 @@ import {useCallback} from 'react';
 
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
-import tryCatch from 'try-catch';
 
-import putout from 'https://esm.sh/@putout/bundle@1.1.5?dev';
+import {createTransformRunner} from '../trasformer.js';
 
-export function Source({source, setSource, setError}) {
+export function Source({source, transform, setCode, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
-        const [error] = tryCatch(putout, value);
-        
-        setError(error);
-        
-        if (error)
-            return;
-        
-        setSource(value);
-    }, [setError, setSource]);
+        const runTransform = createTransformRunner('source');
+        runTransform(transform, {
+            source: value,
+            setCode,
+            setInfo,
+            setTransform,
+            setError,
+            setFinalTransform,
+        });
+    }, [transform, setCode, setTransform, setFinalTransform, setError, setInfo]);
     
     return (
         <CodeMirror
