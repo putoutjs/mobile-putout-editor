@@ -5,6 +5,8 @@ export default montag`
      * Enjoy 🐊Putout Editor on Mobile 📱🎈!
      */
     
-    '🐊 + 📼 = ❓'.replace('❓', '❤️');
+    'Transform your code with 🐊Putout' ?
+        console.log('Codemods never been as simple 🎈') :
+        console.log('🥵');
 `;
 

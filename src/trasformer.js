@@ -1,6 +1,33 @@
 import tryToCatch from 'try-to-catch';
 import tryCatch from 'try-catch';
 
+const {assign} = Object;
+
+const {stringify} = JSON;
+
+export const parseSource = async (value) => {
+    const {parse} = await import('https://esm.sh/@babel/parser');
+    const {traverse} = await import('https://esm.sh/@putout/bundle');
+    const ast = parse(value);
+    
+    traverse(ast, {
+        noScope: true,
+        enter({node}) {
+            delete node.start;
+            delete node.end;
+            delete node.loc;
+            delete node.leadingComments;
+            delete node.directives;
+        },
+    });
+    
+    const {program} = ast;
+    
+    delete program.interpreter;
+    
+    return stringify(program, null, 4);
+};
+
 export const createTransform = async ({type, value, setInfo, setFinalTransform, putout}) => {
     const exports = {};
     const module = {

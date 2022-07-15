@@ -12,6 +12,7 @@ import DefaultTransform from './Transform/DefaultTransform.js';
 import {Transform} from './Transform/Transform.js';
 import {FinalTransform} from './FinalTransform.js';
 import {Result} from './Result.js';
+import {AST} from './AST.js';
 import {Source} from './Source/Source.js';
 
 function TabPanel(props) {
@@ -79,7 +80,8 @@ export default function FullWidthTabs() {
                 >
                     <Tab label="Transform" {...a11yProps(0)} />
                     <Tab label="Source" {...a11yProps(1)} />
-                    <Tab label="[Compiled Transform]" {...a11yProps(2)} />
+                    <Tab label="AST" {...a11yProps(2)} />
+                    <Tab label="Compiled Transform" {...a11yProps(3)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -111,6 +113,11 @@ export default function FullWidthTabs() {
                 />
             </TabPanel>
             <TabPanel value={value} index={2}>
+                <AST
+                    source={source}
+                />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
                 <FinalTransform
                     finalTransform={finalTransform}
                 />
