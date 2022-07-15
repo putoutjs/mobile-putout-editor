@@ -79,7 +79,7 @@ export default function FullWidthTabs() {
                 >
                     <Tab label="Transform" {...a11yProps(0)} />
                     <Tab label="Source" {...a11yProps(1)} />
-                    <Tab label="Final Transform" {...a11yProps(2)} />
+                    <Tab label="[Compiled Transform]" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
