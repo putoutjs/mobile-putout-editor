@@ -8,18 +8,19 @@ import {javascript} from '@codemirror/lang-javascript';
 
 import {createTransformRunner} from '../trasformer.js';
 
-export function Transform({source, transform, setCode, setTransform, setFinalTransform, setError, setInfo}) {
+export function Transform({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
         const runTransform = createTransformRunner('transform');
         runTransform(value, {
             source,
+            setSource,
             setCode,
             setInfo,
             setTransform,
             setError,
             setFinalTransform,
         });
-    }, [source, setCode, setTransform, setFinalTransform, setError, setInfo]);
+    }, [source, setSource, setCode, setTransform, setFinalTransform, setError, setInfo]);
     
     useEffect(() => {
         onChange(transform);

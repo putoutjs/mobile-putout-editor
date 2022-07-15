@@ -5,7 +5,7 @@ import {javascript} from '@codemirror/lang-javascript';
 
 import {createTransformRunner} from '../trasformer.js';
 
-export function Source({source, transform, setCode, setTransform, setFinalTransform, setError, setInfo}) {
+export function Source({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
         const runTransform = createTransformRunner('source');
         runTransform(transform, {
@@ -13,10 +13,11 @@ export function Source({source, transform, setCode, setTransform, setFinalTransf
             setCode,
             setInfo,
             setTransform,
+            setSource,
             setError,
             setFinalTransform,
         });
-    }, [transform, setCode, setTransform, setFinalTransform, setError, setInfo]);
+    }, [transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo]);
     
     return (
         <CodeMirror
