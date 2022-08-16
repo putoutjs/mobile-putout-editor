@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "selector-class-pattern": false,
+        "keyframes-name-pattern": false
+    }
+}

@@ -1,14 +1,14 @@
 import tryToCatch from 'try-to-catch';
 import tryCatch from 'try-catch';
 
-const {assign} = Object;
-
 const {stringify} = JSON;
 
 export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@babel/parser');
     const {traverse} = await import('https://esm.sh/@putout/bundle');
-    const ast = parse(value);
+    const ast = parse(value, {
+        sourceType: 'module',
+    });
     
     traverse(ast, {
         noScope: true,
