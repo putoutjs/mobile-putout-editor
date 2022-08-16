@@ -3,7 +3,8 @@
         "remove-console": "off",
         "convert-commonjs-to-esm": "off",
         "convert-esm-to-commonjs": "off",
-        "package-json/add-type": "off"
+        "package-json/add-type": "off",
+        "promises/add-missing-await": "off"
     },
     "plugins": [
         "react-hooks"

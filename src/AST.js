@@ -6,14 +6,24 @@ import {
 import CodeMirror from '@uiw/react-codemirror';
 import {json} from '@codemirror/lang-json';
 
+import tryToCatch from 'try-to-catch';
+
 import {parseSource} from './trasformer.js';
 
-export function AST({source}) {
+export function AST({source, setError}) {
     const [ast, setAST] = useState(`Fasten your seatbelts... 🚀`);
     
     useEffect(() => {
-        parseSource(source).then(setAST);
-    }, [source]);
+        async function fn() {
+            const [error, ast] = await tryToCatch(parseSource, source);
+            setAST(ast);
+            
+            if (error)
+                setError(error.message);
+        }
+        
+        fn();
+    }, [source, setError]);
     
     return (
         <CodeMirror

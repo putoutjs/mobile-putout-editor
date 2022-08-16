@@ -4,7 +4,7 @@ import tryCatch from 'try-catch';
 const {stringify} = JSON;
 
 export const parseSource = async (value) => {
-    const {parse} = await import('https://esm.sh/@babel/parser');
+    const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
     const {traverse} = await import('https://esm.sh/@putout/bundle');
     const ast = parse(value, {
         sourceType: 'module',

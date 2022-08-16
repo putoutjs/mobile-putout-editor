@@ -114,6 +114,7 @@ export default function FullWidthTabs() {
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <AST
+                    setError={setError}
                     source={source}
                 />
             </TabPanel>
