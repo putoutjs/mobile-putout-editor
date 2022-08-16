@@ -7,7 +7,7 @@ export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
     const {traverse} = await import('https://esm.sh/@putout/bundle');
     const ast = parse(value, {
-        sourceType: 'module',
+        isTS: true,
     });
     
     traverse(ast, {
