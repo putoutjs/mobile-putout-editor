@@ -1,3 +1,8 @@
+2023.02.15, v1.2.2
+
+fix:
+- @putout/bundle version
+
 2023.02.15, v1.2.1
 
 feature:
