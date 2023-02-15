@@ -34,7 +34,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         exports,
     };
     
-    const pluginPutout = (await import('https://esm.sh/@putout/bundle/plugin-putout')).default;
+    const pluginPutout = (await import('https://esm.sh/@putout/bundle@1.4/plugin-putout')).default;
     const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle')).default;
     const pluginDeclareBeforeReference = (await import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle')).default;
     const pluginConvertConstToLet = (await import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle')).default;
