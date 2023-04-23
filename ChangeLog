@@ -1,3 +1,14 @@
+2023.04.23, v1.3.0
+
+feature:
+- b4fb4f0 mobile-putout-editor: add support of TS
+- 8895200 package: web-vitals v3.3.1
+- 2afb4c7 package: @testing-library/user-event v14.4.3
+- 34491fa package: @testing-library/react v14.0.0
+- cfae7f7 package: putout v29.2.5
+- b3c3f94 package: @putout/plugin-react-hooks v5.0.0
+- 03e03bb package: eslint-plugin-putout v17.5.0
+
 2023.02.15, v1.2.2
 
 fix:
