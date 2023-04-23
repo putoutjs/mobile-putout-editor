@@ -47,6 +47,6 @@
     "eslint": "^8.19.0",
     "eslint-plugin-putout": "^17.5.0",
     "madrun": "^9.0.5",
-    "putout": "^26.22.0"
+    "putout": "^29.2.5"
   }
 }
