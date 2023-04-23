@@ -43,7 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@putout/plugin-react-hooks": "^4.4.0",
+    "@putout/plugin-react-hooks": "^5.0.0",
     "eslint": "^8.19.0",
     "eslint-plugin-putout": "^17.5.0",
     "madrun": "^9.0.5",
