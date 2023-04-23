@@ -41,6 +41,8 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
     const pluginConvertESMToCommonJS = await import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle');
     
     const {code} = putout(value, {
+        printer: 'putout',
+        isTS: true,
         plugins: [
             ['declare', pluginDeclare],
             ['declare-before-reference', pluginDeclareBeforeReference],
@@ -83,6 +85,8 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
     }
     
     const [error, result] = tryCatch(putout, source, {
+        printer: 'putout',
+        isTS: true,
         plugins: [
             ['transform', pluginTransform],
         ],

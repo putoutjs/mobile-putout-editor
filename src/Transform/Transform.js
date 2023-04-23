@@ -26,6 +26,10 @@ export function Transform({source, transform, setCode, setSource, setTransform, 
         onChange(transform);
     }, [source, transform, onChange, setCode, setTransform, setFinalTransform, setError, setInfo]);
     
+    const extensions = [
+        javascript({jsx: true, typescript: true}),
+    ];
+    
     return (
         <CodeMirror
             value={transform}
@@ -33,7 +37,7 @@ export function Transform({source, transform, setCode, setSource, setTransform, 
             minHeight="100%"
             maxHeight="80vh"
             width="100%"
-            extensions={[javascript({jsx: true})]}
+            extensions={extensions}
             onChange={onChange}
         />
     );

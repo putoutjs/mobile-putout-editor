@@ -19,6 +19,10 @@ export function Source({source, transform, setCode, setSource, setTransform, set
         });
     }, [transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo]);
     
+    const extensions = [
+        javascript({jsx: true, typescript: true}),
+    ];
+    
     return (
         <CodeMirror
             value={source}
@@ -26,7 +30,7 @@ export function Source({source, transform, setCode, setSource, setTransform, set
             minHeight="100%"
             maxHeight="80vh"
             width="100%"
-            extensions={[javascript({jsx: true})]}
+            extensions={extensions}
             onChange={onChange}
         />
     );
