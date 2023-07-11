@@ -1,3 +1,8 @@
+2023.07.11, v1.4.0
+
+fix:
+- 72a4db9 parseSource: version
+
 2023.04.23, v1.3.0
 
 feature:
