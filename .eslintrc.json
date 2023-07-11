@@ -10,7 +10,5 @@
         "plugin:putout/safe+align",
         "react-app/jest"
     ],
-    "plugins": [
-        "putout"
-    ]
+    "plugins": ["putout"]
 }

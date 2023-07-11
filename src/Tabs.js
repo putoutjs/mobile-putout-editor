@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import {Alert} from '@mui/material';
 import PropTypes from 'prop-types';
 import {useState} from 'react';
-
 import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {Transform} from './Transform/Transform.js';
@@ -31,11 +30,11 @@ function TabPanel(props) {
             aria-labelledby={`full-width-tab-${index}`}
             {...other}
         >
-            {value === index &&
-                <Box sx={{p: 3}}>
-                    <Typography component="span">{children}</Typography>
-                </Box>
-            }
+            {value === index && <Box sx={{
+                p: 3,
+            }}>
+                <Typography component="span">{children}</Typography>
+            </Box>}
         </div>
     );
 }
@@ -68,7 +67,9 @@ export default function FullWidthTabs() {
     };
     
     return (
-        <Box sx={{bgcolor: 'background.paper'}}>
+        <Box sx={{
+            bgcolor: 'background.paper',
+        }}>
             <AppBar position="static">
                 <Tabs
                     value={value}
@@ -78,10 +79,10 @@ export default function FullWidthTabs() {
                     variant="fullWidth"
                     aria-label="full width tabs example"
                 >
-                    <Tab label="Transform" {...a11yProps(0)} />
-                    <Tab label="Source" {...a11yProps(1)} />
-                    <Tab label="AST" {...a11yProps(2)} />
-                    <Tab label="Cooked" {...a11yProps(3)} />
+                    <Tab label="Transform" {...a11yProps(0)}/>
+                    <Tab label="Source" {...a11yProps(1)}/>
+                    <Tab label="AST" {...a11yProps(2)}/>
+                    <Tab label="Cooked" {...a11yProps(3)}/>
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -123,8 +124,8 @@ export default function FullWidthTabs() {
                     finalTransform={finalTransform}
                 />
             </TabPanel>
-            {error && <Alert severity="error">{String(error)}</Alert> }
-            {info && <Alert severity="info">{String(info)}</Alert> }
+            {error && <Alert severity="error">{String(error)}</Alert>}
+            {info && <Alert severity="info">{String(info)}</Alert>}
         </Box>
     );
 }

@@ -5,7 +5,7 @@ import {
 import App from './App.js';
 
 test('renders learn react link', () => {
-    render(<App />);
+    render(<App/>);
     
     const linkElement = screen.getByText(/learn react/i);
     

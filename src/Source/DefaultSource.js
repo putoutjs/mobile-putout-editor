@@ -9,4 +9,3 @@ export default montag`
         console.log('Codemods never been as simple 🎈') :
         console.log('🥵');
 `;
-

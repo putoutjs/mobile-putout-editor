@@ -60,6 +60,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
     const console = {
         log: (a) => setInfo(a),
     };
+    
     const fn = Function('require', 'module', 'exports', 'console', code);
     const require = () => putout;
     
@@ -110,4 +111,3 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
         return;
     }
 };
-

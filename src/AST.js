@@ -2,12 +2,9 @@ import {
     useEffect,
     useState,
 } from 'react';
-
 import CodeMirror from '@uiw/react-codemirror';
 import {json} from '@codemirror/lang-json';
-
 import tryToCatch from 'try-to-catch';
-
 import {parseSource} from './trasformer.js';
 
 export function AST({source, setError}) {
@@ -34,7 +31,9 @@ export function AST({source, setError}) {
             width="100%"
             readOnly={true}
             theme="dark"
-            extensions={[json()]}
+            extensions={[
+                json(),
+            ]}
         />
     );
 }

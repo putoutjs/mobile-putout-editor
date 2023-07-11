@@ -3,7 +3,10 @@ import {javascript} from '@codemirror/lang-javascript';
 
 export function Result({code}) {
     const extensions = [
-        javascript({jsx: true, typescript: true}),
+        javascript({
+            jsx: true,
+            typescript: true,
+        }),
     ];
     
     return (
@@ -19,3 +22,4 @@ export function Result({code}) {
         />
     );
 }
+

@@ -1,13 +1,12 @@
 import {useCallback} from 'react';
-
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
-
 import {createTransformRunner} from '../trasformer.js';
 
 export function Source({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
         const runTransform = createTransformRunner('source');
+        
         runTransform(transform, {
             source: value,
             setCode,
@@ -17,10 +16,21 @@ export function Source({source, transform, setCode, setSource, setTransform, set
             setError,
             setFinalTransform,
         });
-    }, [transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo]);
+    }, [
+        transform,
+        setCode,
+        setSource,
+        setTransform,
+        setFinalTransform,
+        setError,
+        setInfo,
+    ]);
     
     const extensions = [
-        javascript({jsx: true, typescript: true}),
+        javascript({
+            jsx: true,
+            typescript: true,
+        }),
     ];
     
     return (
@@ -35,3 +45,4 @@ export function Source({source, transform, setCode, setSource, setTransform, set
         />
     );
 }
+
