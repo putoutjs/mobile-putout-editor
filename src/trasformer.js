@@ -5,7 +5,7 @@ const {stringify} = JSON;
 
 export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
-    const {traverse} = await import('https://esm.sh/@putout/bundle');
+    const {traverse} = await import('https://esm.sh/@putout/bundle@1');
     const ast = parse(value, {
         isTS: true,
     });
