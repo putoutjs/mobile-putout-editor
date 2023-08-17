@@ -54,11 +54,9 @@ function a11yProps(index) {
     };
 }
 
-export default function FullWidthTabs() {
+export default function FullWidthTabs({source, setSource, transform, setTransform}) {
     const [value, setValue] = useState(0);
-    const [transform, setTransform] = useState(DefaultTransform);
     const [finalTransform, setFinalTransform] = useState(DefaultTransform);
-    const [source, setSource] = useState(DefaultSource);
     const [code, setCode] = useState(DefaultSource);
     
     const [error, setError] = useState(null);

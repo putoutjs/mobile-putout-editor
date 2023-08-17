@@ -5,8 +5,9 @@ import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import ForkRightOutlinedIcon from '@mui/icons-material/ForkRightOutlined';
 import IconButton from '@mui/material/IconButton';
+import DefaultTransform from '../Transform/DefaultTransform.js';
 
-export default function MainMenu() {
+export default function MainMenu({setTransform}) {
     const [anchorEl, setAnchorEl] = React.useState();
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -15,6 +16,11 @@ export default function MainMenu() {
     
     const handleClose = () => {
         setAnchorEl(null);
+    };
+    
+    const handleNew = () => {
+        setTransform(DefaultTransform);
+        handleClose();
     };
     
     return (
@@ -37,7 +43,7 @@ export default function MainMenu() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}><InsertDriveFileOutlinedIcon/>New</MenuItem>
+                <MenuItem onClick={handleNew}><InsertDriveFileOutlinedIcon/>New</MenuItem>
                 <MenuItem onClick={handleClose}><SaveOutlinedIcon/>Save</MenuItem>
                 <MenuItem onClick={handleClose}><ForkRightOutlinedIcon/>Fork</MenuItem>
             </Menu>
