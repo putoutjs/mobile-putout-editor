@@ -54,13 +54,22 @@ function a11yProps(index) {
     };
 }
 
-export default function FullWidthTabs({source, setSource, transform, setTransform}) {
+export default function FullWidthTabs(props) {
+    const {
+        source,
+        setSource,
+        transform,
+        setTransform,
+        error,
+        setError,
+        info,
+        setInfo,
+        success,
+        setSuccess,
+    } = props;
     const [value, setValue] = useState(0);
     const [finalTransform, setFinalTransform] = useState(DefaultTransform);
     const [code, setCode] = useState(DefaultSource);
-    
-    const [error, setError] = useState(null);
-    const [info, setInfo] = useState(null);
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -128,6 +137,7 @@ export default function FullWidthTabs({source, setSource, transform, setTransfor
             </TabPanel>
             {error && <Alert severity="error">{String(error)}</Alert>}
             {info && <Alert severity="info">{String(info)}</Alert>}
+            {success && <Alert severity="success">{success}</Alert>}
         </Box>
     );
 }

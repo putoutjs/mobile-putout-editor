@@ -8,19 +8,32 @@ import DefaultTransform from './Transform/DefaultTransform.js';
 function App() {
     const [source, setSource] = useState(DefaultSource);
     const [transform, setTransform] = useState(DefaultTransform);
+    const [error, setError] = useState(null);
+    const [info, setInfo] = useState(null);
+    const [success, setSuccess] = useState(null);
     
     return (
         <div className="App">
             <header className="App-header">
                 <MainMenu
+                    source={source}
+                    transform={transform}
                     setTransform={setTransform}
+                    setSuccess={setSuccess}
                 />
             </header>
             <Tabs
                 source={source}
                 setSource={setSource}
                 transform={transform}
-                setTransform={setTransform}/>
+                setTransform={setTransform}
+                error={error}
+                info={info}
+                setError={setError}
+                setInfo={setInfo}
+                success={success}
+                setSuccess={setSuccess}
+            />
         </div>
     );
 }

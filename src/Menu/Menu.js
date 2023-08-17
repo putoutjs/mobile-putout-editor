@@ -6,8 +6,10 @@ import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutl
 import ForkRightOutlinedIcon from '@mui/icons-material/ForkRightOutlined';
 import IconButton from '@mui/material/IconButton';
 import DefaultTransform from '../Transform/DefaultTransform.js';
+import {create} from '../Gist/gist.js';
+import DefaultSettings from '../Gist/DefaultSettings.js';
 
-export default function MainMenu({setTransform}) {
+export default function MainMenu({source, transform, setTransform, setSuccess}) {
     const [anchorEl, setAnchorEl] = React.useState();
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -21,6 +23,22 @@ export default function MainMenu({setTransform}) {
     const handleNew = () => {
         setTransform(DefaultTransform);
         handleClose();
+    };
+    
+    const handleSave = async () => {
+        handleClose();
+        
+        const result = await create({
+            ...DefaultSettings,
+            code: source,
+            transform,
+            filename: 'source.js',
+        });
+        
+        const {id, history} = result._gist;
+        const link = `https://putout.cloudcmd.io/#/gist/${id}/${history[0].version}`;
+        
+        setSuccess(<a href={link}>{link}</a>);
     };
     
     return (
@@ -44,7 +62,7 @@ export default function MainMenu({setTransform}) {
                 }}
             >
                 <MenuItem onClick={handleNew}><InsertDriveFileOutlinedIcon/>New</MenuItem>
-                <MenuItem onClick={handleClose}><SaveOutlinedIcon/>Save</MenuItem>
+                <MenuItem onClick={handleSave}><SaveOutlinedIcon/>Save</MenuItem>
                 <MenuItem onClick={handleClose}><ForkRightOutlinedIcon/>Fork</MenuItem>
             </Menu>
         </div>
