@@ -25,3 +25,10 @@ code {
         'Courier New',
         monospace;
 }
+
+.menu {
+    font-size: calc(10px + 2vmin);   
+}
+.logo {
+    color: rgb(0 0 0 / 100%);
+}

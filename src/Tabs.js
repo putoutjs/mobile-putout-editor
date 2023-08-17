@@ -30,9 +30,11 @@ function TabPanel(props) {
             aria-labelledby={`full-width-tab-${index}`}
             {...other}
         >
-            {value === index && <Box sx={{
-                p: 3,
-            }}>
+            {value === index && <Box
+                sx={{
+                    p: 3,
+                }}
+            >
                 <Typography component="span">{children}</Typography>
             </Box>}
         </div>
@@ -67,9 +69,11 @@ export default function FullWidthTabs() {
     };
     
     return (
-        <Box sx={{
-            bgcolor: 'background.paper',
-        }}>
+        <Box
+            sx={{
+                bgcolor: 'background.paper',
+            }}
+        >
             <AppBar position="static">
                 <Tabs
                     value={value}
