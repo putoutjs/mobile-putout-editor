@@ -5,6 +5,8 @@ import {
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
 import {createTransformRunner} from '../trasformer.js';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 export function Transform({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
@@ -48,6 +50,15 @@ export function Transform({source, transform, setCode, setSource, setTransform, 
             typescript: true,
         }),
     ];
+    
+    if (global.location.hash && !transform)
+        return (
+            <Box sx={{
+                width: '100%',
+            }}>
+                <LinearProgress/>
+            </Box>
+        );
     
     return (
         <CodeMirror

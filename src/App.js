@@ -9,7 +9,6 @@ import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {fetchFromURL} from './Gist/gist.js';
 import once from 'once';
-import wraptile from 'wraptile';
 
 const run = once(async ({setSource, setTransform}) => {
     if (!global.location.hash)
@@ -65,4 +64,3 @@ function App() {
 }
 
 export default App;
-

@@ -65,8 +65,8 @@ export default function FullWidthTabs(props) {
         info,
         setInfo,
         success,
-        setSuccess,
     } = props;
+    
     const [value, setValue] = useState(0);
     const [finalTransform, setFinalTransform] = useState(DefaultTransform);
     const [code, setCode] = useState(DefaultSource);

@@ -210,4 +210,3 @@ function getSource(config, gist) {
         return gist.files[`source.js`].content;
     }
 }
-

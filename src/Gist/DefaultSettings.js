@@ -12,12 +12,9 @@ export default {
             tokens: false,
             plugins: [
                 'importMeta',
-                [
-                    'importAttributes',
-                    {
-                        deprecatedAssertSyntax: true,
-                    },
-                ],
+                ['importAttributes', {
+                    deprecatedAssertSyntax: true,
+                }],
                 'dynamicImport',
                 'bigInt',
                 'classProperties',
@@ -25,12 +22,9 @@ export default {
                 'destructuringPrivate',
                 'exportDefaultFrom',
                 'throwExpressions',
-                [
-                    'recordAndTuple',
-                    {
-                        syntaxType: 'hash',
-                    },
-                ],
+                ['recordAndTuple', {
+                    syntaxType: 'hash',
+                }],
                 'explicitResourceManagement',
                 'jsx',
                 'typescript',

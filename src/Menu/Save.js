@@ -1,7 +1,4 @@
-import {
-    create,
-    fetchFromURL,
-} from '../Gist/gist.js';
+import {create} from '../Gist/gist.js';
 import DefaultSettings from '../Gist/DefaultSettings.js';
 import wraptile from 'wraptile';
 
@@ -22,13 +19,10 @@ export const createSave = wraptile(async ({close, source, transform, setSuccess}
     
     global.location.hash = revision.getPath();
     
-    setSuccess(
-        <div>
-            <ul>
-                <li>☝️Continue in 🐊<a href={link}>Putout Editor</a></li>
-                <li>☝️Download with <code><a href={REDPUT_URL}>redput</a></code></li>
-            </ul>
-        </div>,
-    );
+    setSuccess(<div>
+        <ul>
+            <li>☝️Continue in 🐊<a href={link}>Putout Editor</a></li>
+            <li>☝️Download with <code><a href={REDPUT_URL}>redput</a></code></li>
+        </ul>
+    </div>);
 });
-
