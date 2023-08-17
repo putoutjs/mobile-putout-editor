@@ -9,8 +9,10 @@ import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {fetchFromURL} from './Gist/gist.js';
 import once from 'once';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const run = once(async ({setSource, setTransform}) => {
+const run = once(async ({setSource, setTransform, setGistReady}) => {
     if (!global.location.hash)
         return;
     
@@ -19,6 +21,7 @@ const run = once(async ({setSource, setTransform}) => {
     
     setSource(files['source.js'].content);
     setTransform(files['transform.js'].content);
+    setGistReady(true);
 });
 
 function App() {
@@ -27,16 +30,27 @@ function App() {
     const [error, setError] = useState(null);
     const [info, setInfo] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [gistReady, setGistReady] = useState(!global.location.hash);
     
     useEffect(() => () => {
         run({
             setTransform,
             setSource,
+            setGistReady,
         });
-    });
+    }, [transform, error]);
     
     return (
         <div className="App">
+            <Backdrop
+                sx={{
+                    color: '#fff',
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+                open={!gistReady}
+            >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
             <header className="App-header">
                 <MainMenu
                     source={source}
@@ -56,6 +70,7 @@ function App() {
                 setInfo={setInfo}
                 success={success}
                 setSuccess={setSuccess}
+                gistReady={gistReady}
             />
         </div>
     );

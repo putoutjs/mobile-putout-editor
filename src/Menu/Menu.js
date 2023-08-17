@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import DefaultTransform from '../Transform/DefaultTransform.js';
 import {createSave} from './Save.js';
 
+const version = process.env.REACT_APP_VERSION;
+
 export default function MainMenu({source, transform, setTransform, setSuccess}) {
     const [anchorEl, setAnchorEl] = React.useState();
     const open = Boolean(anchorEl);
@@ -40,7 +42,7 @@ export default function MainMenu({source, transform, setTransform, setSuccess}) 
                 aria-haspopup="true"
                 onClick={handleClick}
             ><span className="logo">🐊</span></IconButton>
-            <span className="menu"><code>Putout Editor</code></span>
+            <span className="menu"><code>Putout Editor <small>v{version}</small></code></span>
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}

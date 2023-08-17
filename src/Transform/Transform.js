@@ -5,11 +5,12 @@ import {
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
 import {createTransformRunner} from '../trasformer.js';
-import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
 
-export function Transform({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
+export function Transform({gistReady, source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
+        if (!gistReady)
+            return;
+        
         const runTransform = createTransformRunner('transform');
         
         runTransform(value, {
@@ -29,6 +30,7 @@ export function Transform({source, transform, setCode, setSource, setTransform, 
         setFinalTransform,
         setError,
         setInfo,
+        gistReady,
     ]);
     
     useEffect(() => {
@@ -51,9 +53,11 @@ export function Transform({source, transform, setCode, setSource, setTransform, 
         }),
     ];
     
+    const value = gistReady ? transform : '';
+    
     return (
         <CodeMirror
-            value={transform}
+            value={value}
             height="100%"
             minHeight="100%"
             maxHeight="80vh"

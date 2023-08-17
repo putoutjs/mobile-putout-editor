@@ -65,6 +65,7 @@ export default function FullWidthTabs(props) {
         info,
         setInfo,
         success,
+        gistReady,
     } = props;
     
     const [value, setValue] = useState(0);
@@ -105,6 +106,7 @@ export default function FullWidthTabs(props) {
                     setError={setError}
                     setInfo={setInfo}
                     setFinalTransform={setFinalTransform}
+                    gistReady={gistReady}
                 />
             </TabPanel>
             <TabPanel value={value} index={1}>
