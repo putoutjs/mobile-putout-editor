@@ -33,7 +33,7 @@ function App() {
             setTransform,
             setSource,
         });
-    }, [error]);
+    });
     
     return (
         <div className="App">
