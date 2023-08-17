@@ -32,3 +32,8 @@ code {
 .logo {
     color: rgb(0 0 0 / 100%);
 }
+
+.MuiMenu-list {
+    color: white !important;
+    background: #282c34 !important;
+}

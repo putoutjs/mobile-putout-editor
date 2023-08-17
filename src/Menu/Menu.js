@@ -3,11 +3,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
-import ForkRightOutlinedIcon from '@mui/icons-material/ForkRightOutlined';
 import IconButton from '@mui/material/IconButton';
 import DefaultTransform from '../Transform/DefaultTransform.js';
-import {create} from '../Gist/gist.js';
-import DefaultSettings from '../Gist/DefaultSettings.js';
+import {createSave} from './Save.js';
 
 export default function MainMenu({source, transform, setTransform, setSuccess}) {
     const [anchorEl, setAnchorEl] = React.useState();
@@ -25,21 +23,12 @@ export default function MainMenu({source, transform, setTransform, setSuccess}) 
         handleClose();
     };
     
-    const handleSave = async () => {
-        handleClose();
-        
-        const result = await create({
-            ...DefaultSettings,
-            code: source,
-            transform,
-            filename: 'source.js',
-        });
-        
-        const {id, history} = result._gist;
-        const link = `https://putout.cloudcmd.io/#/gist/${id}/${history[0].version}`;
-        
-        setSuccess(<a href={link}>{link}</a>);
-    };
+    const save = createSave({
+        close: handleClose,
+        source,
+        transform,
+        setSuccess,
+    });
     
     return (
         <div>
@@ -61,9 +50,8 @@ export default function MainMenu({source, transform, setTransform, setSuccess}) 
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleNew}><InsertDriveFileOutlinedIcon/>New</MenuItem>
-                <MenuItem onClick={handleSave}><SaveOutlinedIcon/>Save</MenuItem>
-                <MenuItem onClick={handleClose}><ForkRightOutlinedIcon/>Fork</MenuItem>
+                <MenuItem className="MenuItem" onClick={handleNew}><InsertDriveFileOutlinedIcon/>New</MenuItem>
+                <MenuItem className="MenuItem" onClick={save}><SaveOutlinedIcon/>Save</MenuItem>
             </Menu>
         </div>
     );

@@ -3,7 +3,8 @@
         "import/no-anonymous-default-export": "off",
         "react/jsx-curly-brace-presence": ["error", "never"],
         "react/self-closing-comp": "error",
-        "no-new-func": "off"
+        "no-new-func": "off",
+        "default-case": "off"
     },
     "extends": [
         "react-app",
