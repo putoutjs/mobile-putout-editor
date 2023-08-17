@@ -95,8 +95,9 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
     
     setError(error);
     
-    if (error)
+    if (error) {
         return;
+    }
     
     const {code} = result;
     setCode(code);

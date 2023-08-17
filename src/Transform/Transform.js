@@ -51,15 +51,6 @@ export function Transform({source, transform, setCode, setSource, setTransform, 
         }),
     ];
     
-    if (global.location.hash && !transform)
-        return (
-            <Box sx={{
-                width: '100%',
-            }}>
-                <LinearProgress/>
-            </Box>
-        );
-    
     return (
         <CodeMirror
             value={transform}

@@ -23,9 +23,7 @@ const run = once(async ({setSource, setTransform}) => {
 
 function App() {
     const [source, setSource] = useState(DefaultSource);
-    
-    const defaultTransform = global.location.hash ? '' : DefaultTransform;
-    const [transform, setTransform] = useState(defaultTransform);
+    const [transform, setTransform] = useState(DefaultTransform);
     const [error, setError] = useState(null);
     const [info, setInfo] = useState(null);
     const [success, setSuccess] = useState(null);
@@ -35,7 +33,7 @@ function App() {
             setTransform,
             setSource,
         });
-    }, [setSource, setTransform]);
+    }, [error]);
     
     return (
         <div className="App">
