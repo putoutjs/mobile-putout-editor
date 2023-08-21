@@ -38,7 +38,7 @@ function App() {
             setSource,
             setGistReady,
         });
-    }, [transform, error]);
+    });
     
     return (
         <div className="App">
