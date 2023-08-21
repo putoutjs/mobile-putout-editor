@@ -32,7 +32,7 @@ function App() {
     const [success, setSuccess] = useState(null);
     const [gistReady, setGistReady] = useState(!global.location.hash);
     
-    useEffect(() => () => {
+    useEffect(() => {
         run({
             setTransform,
             setSource,
