@@ -1,3 +1,8 @@
+2023.08.21, v1.7.6
+
+fix:
+- b19503a app: effect: empty deps
+
 2023.08.21, v1.7.5
 
 fix:
