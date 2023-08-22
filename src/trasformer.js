@@ -5,7 +5,7 @@ const {stringify} = JSON;
 
 export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
-    const {traverse} = await import('https://esm.sh/@putout/bundle@1');
+    const {traverse} = await import('https://esm.sh/@putout/bundle@2');
     const ast = parse(value, {
         isTS: true,
     });
@@ -34,7 +34,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         exports,
     };
     
-    const pluginPutout = (await import('https://esm.sh/@putout/plugin-putout@14.3?alias=putout:@putout/bundle')).default;
+    const pluginPutout = (await import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle')).default;
     const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle')).default;
     const pluginDeclareBeforeReference = (await import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle')).default;
     const pluginConvertConstToLet = (await import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle')).default;
@@ -70,7 +70,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
 };
 
 export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setFinalTransform}) => {
-    const putout = (await import('https://esm.sh/@putout/bundle@1')).default;
+    const putout = (await import('https://esm.sh/@putout/bundle@2')).default;
     
     const [errorTransform, pluginTransform] = await tryToCatch(createTransform, {
         type,
