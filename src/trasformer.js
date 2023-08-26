@@ -34,11 +34,11 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         exports,
     };
     
-    const pluginPutout = (await import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle')).default;
-    const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare-undefined-variables?alias=putout:@putout/bundle')).default;
-    const pluginDeclareBeforeReference = (await import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle')).default;
-    const pluginConvertConstToLet = (await import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle')).default;
-    const pluginConvertESMToCommonJS = await import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle');
+    const pluginPutout = (await import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle@2')).default;
+    const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle@2')).default;
+    const pluginDeclareBeforeReference = (await import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle@2')).default;
+    const pluginConvertConstToLet = (await import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle@2')).default;
+    const pluginConvertESMToCommonJS = await import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle@2');
     
     const {code} = putout(value, {
         printer: 'putout',
