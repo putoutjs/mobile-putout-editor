@@ -1,6 +1,7 @@
 import tryToCatch from 'try-to-catch';
 import tryCatch from 'try-catch';
 
+const noop = () => {};
 const {stringify} = JSON;
 
 export const parseSource = async (value) => {
@@ -69,7 +70,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
     return exports;
 };
 
-export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setFinalTransform}) => {
+export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setResultReady = noop, setFinalTransform}) => {
     const putout = (await import('https://esm.sh/@putout/bundle@3')).default;
     
     const [errorTransform, pluginTransform] = await tryToCatch(createTransform, {
@@ -101,6 +102,7 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
     
     const {code} = result;
     setCode(code);
+    setResultReady(true);
     
     if (type === 'transform') {
         setTransform(value);
@@ -112,3 +114,4 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
         return;
     }
 };
+

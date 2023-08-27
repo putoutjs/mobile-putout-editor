@@ -3,7 +3,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
 import {createTransformRunner} from '../trasformer.js';
 
-export function Source({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
+export function Source({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo, setResultReady}) {
     const onChange = useCallback((value) => {
         const runTransform = createTransformRunner('source');
         
@@ -15,6 +15,7 @@ export function Source({source, transform, setCode, setSource, setTransform, set
             setSource,
             setError,
             setFinalTransform,
+            setResultReady,
         });
     }, [
         transform,

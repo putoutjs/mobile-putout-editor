@@ -71,6 +71,7 @@ export default function FullWidthTabs(props) {
     const [value, setValue] = useState(0);
     const [finalTransform, setFinalTransform] = useState(DefaultTransform);
     const [code, setCode] = useState(DefaultSource);
+    const [resultReady, setResultReady] = useState(false);
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -107,10 +108,12 @@ export default function FullWidthTabs(props) {
                     setInfo={setInfo}
                     setFinalTransform={setFinalTransform}
                     gistReady={gistReady}
+                    setResultReady={setResultReady}
                 />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Source
+                    setResultReady={setResultReady}
                     source={source}
                     transform={transform}
                     setSource={setSource}
@@ -123,6 +126,7 @@ export default function FullWidthTabs(props) {
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Result
+                    resultReady={resultReady}
                     code={code}
                 />
             </TabPanel>
