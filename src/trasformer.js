@@ -35,21 +35,32 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         exports,
     };
     
-    const pluginPutout = (await import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle')).default;
-    const pluginDeclare = (await import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle')).default;
-    const pluginDeclareBeforeReference = (await import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle')).default;
-    const pluginConvertConstToLet = (await import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle')).default;
-    const pluginConvertESMToCommonJS = await import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle');
+    const [
+        pluginPutout,
+        pluginDeclare,
+        pluginDeclareBeforeReference,
+        pluginConvertConstToLet,
+        pluginConvertESMToCommonJS,
+        pluginConvertOptionalToLogical,
+    ] = await Promise.all([
+        import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-convert-optional-to-logical?alias=putout:@putout/bundle&deps=@putout/bundle'),
+    ]);
     
     const {code} = putout(value, {
         printer: 'putout',
         isTS: true,
         plugins: [
-            ['declare', pluginDeclare],
-            ['declare-before-reference', pluginDeclareBeforeReference],
-            ['putout', pluginPutout],
+            ['declare', pluginDeclare.default],
+            ['declare-before-reference', pluginDeclareBeforeReference.default],
+            ['putout', pluginPutout.default],
+            ['convert-const-to-let', pluginConvertConstToLet.default],
             ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
-            ['convert-const-to-let', pluginConvertConstToLet],
+            ['convert-optional-to-logical', pluginConvertOptionalToLogical],
         ],
     });
     
