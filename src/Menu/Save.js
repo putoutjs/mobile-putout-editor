@@ -2,8 +2,6 @@ import {create} from '../Gist/gist.js';
 import DefaultSettings from '../Gist/DefaultSettings.js';
 import wraptile from 'wraptile';
 
-const REDPUT_URL = 'https://github.com/putoutjs/redput';
-
 export const createSave = wraptile(async ({close, source, transform, setSuccess}) => {
     close();
     
