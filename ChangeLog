@@ -1,3 +1,9 @@
+2023.11.12, v1.11.0
+
+feature:
+- 1bba6ab add "New FileSystem" menu item
+- 0e5329f putout-editor-react: eslint-plugin-putout v21.0.2
+
 2023.09.27, v1.10.0
 
 feature:
