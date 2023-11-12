@@ -5,11 +5,14 @@ import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import IconButton from '@mui/material/IconButton';
 import DefaultTransform from '../Transform/DefaultTransform.js';
+import DefaultFilesystemTransform from '../Transform/DefaultFilesystemTransform.js';
 import {createSave} from './Save.js';
+import DefaultSource from '../Source/DefaultSource.js';
+import DefaultFilesystemSource from '../Source/DefaultFilesystemSource.js';
 
 const version = process.env.REACT_APP_VERSION;
 
-export default function MainMenu({source, transform, setTransform, setSuccess}) {
+export default function MainMenu({source, transform, setTransform, setSource, setSuccess}) {
     const [anchorEl, setAnchorEl] = React.useState();
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -22,6 +25,13 @@ export default function MainMenu({source, transform, setTransform, setSuccess}) 
     
     const handleNew = () => {
         setTransform(DefaultTransform);
+        setSource(DefaultSource);
+        handleClose();
+    };
+    
+    const handleNewFilesystem = () => {
+        setTransform(DefaultFilesystemTransform);
+        setSource(DefaultFilesystemSource);
         handleClose();
     };
     
@@ -53,9 +63,9 @@ export default function MainMenu({source, transform, setTransform, setSuccess}) 
                 }}
             >
                 <MenuItem className="MenuItem" onClick={handleNew}><InsertDriveFileOutlinedIcon/>New</MenuItem>
+                <MenuItem className="MenuItem" onClick={handleNewFilesystem}><InsertDriveFileOutlinedIcon/>New Filesystem</MenuItem>
                 <MenuItem className="MenuItem" onClick={save}><SaveOutlinedIcon/>Save</MenuItem>
             </Menu>
         </div>
     );
 }
-

@@ -56,6 +56,7 @@ function App() {
                     source={source}
                     transform={transform}
                     setTransform={setTransform}
+                    setSource={setSource}
                     setSuccess={setSuccess}
                 />
             </header>
