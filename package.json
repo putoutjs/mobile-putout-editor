@@ -46,7 +46,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@putout/plugin-react-hooks": "^5.0.0",
     "eslint": "^8.19.0",
-    "eslint-plugin-putout": "^20.0.0",
+    "eslint-plugin-putout": "^21.0.2",
     "madrun": "^9.0.5",
     "putout": "^32.1.0",
     "wraptile": "^3.0.0"
