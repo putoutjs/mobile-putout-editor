@@ -42,17 +42,21 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         pluginConvertConstToLet,
         pluginConvertESMToCommonJS,
         pluginConvertOptionalToLogical,
+        pluginMergeDestructuringProperties,
+        pluginNodejs,
     ] = await Promise.all([
         import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle'),
-        import('https://esm.sh/@putout/plugin-convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-nodejs/convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-convert-optional-to-logical?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle'),
     ]);
     
     const {code} = putout(value, {
         printer: 'putout',
+        fixCount: 10,
         isTS: true,
         plugins: [
             ['declare', pluginDeclare.default],
@@ -61,6 +65,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
             ['convert-const-to-let', pluginConvertConstToLet.default],
             ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
             ['convert-optional-to-logical', pluginConvertOptionalToLogical],
+            ['merge-destructuring-properties', pluginMergeDestructuringProperties],
         ],
     });
     
