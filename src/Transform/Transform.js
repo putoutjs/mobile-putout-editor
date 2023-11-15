@@ -61,7 +61,7 @@ export function Transform({gistReady, setResultReady, source, transform, setCode
             value={value}
             height="100%"
             minHeight="100%"
-            maxHeight="80vh"
+            maxHeight="70vh"
             width="100%"
             extensions={extensions}
             onChange={onChange}
