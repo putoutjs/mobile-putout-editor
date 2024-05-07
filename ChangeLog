@@ -1,3 +1,13 @@
+2024.05.07, v1.13.0
+
+feature:
+- 2bb7f6f putout-editor-react: eslint-plugin-putout v22.7.0
+- d05d341 putout-editor-react: @testing-library/react v15.0.7
+- 5a34cf0 putout-editor-react: @putout/plugin-react-hooks v6.0.0
+- bb17a89 putout-editor-react: putout v35.22.1
+- 6a02664 putout-editor-react: madrun v10.0.1
+- 4896ef9 CircleProgress -> LinearProgress
+
 2023.11.15, v1.12.0
 
 feature:
