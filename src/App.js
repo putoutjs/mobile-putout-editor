@@ -9,8 +9,11 @@ import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {fetchFromURL} from './Gist/gist.js';
 import once from 'once';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import {
+    Fade,
+    LinearProgress,
+} from '@mui/material';
+import Box from '@mui/material/Box';
 
 const run = once(async ({setSource, setTransform, setGistReady}) => {
     if (!global.location.hash)
@@ -42,15 +45,17 @@ function App() {
     
     return (
         <div className="App">
-            <Backdrop
-                sx={{
-                    color: '#fff',
-                    zIndex: (theme) => theme.zIndex.drawer + 1,
+            <Fade
+                in={!gistReady}
+                style={{
+                    transitionDelay: !gistReady ? '800ms' : '0ms',
                 }}
-                open={!gistReady}
+                unmountOnExit
             >
-                <CircularProgress color="inherit"/>
-            </Backdrop>
+                <Box sx={{width: '100%'}}>
+                    <LinearProgress color="inherit" variant="indeterminate"/>
+                </Box>
+            </Fade>
             <header className="App-header">
                 <MainMenu
                     source={source}

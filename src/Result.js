@@ -1,7 +1,10 @@
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import {
+    Fade,
+    LinearProgress,
+} from '@mui/material';
+import Box from '@mui/material/Box';
 
 export function Result({code, resultReady}) {
     const extensions = [
@@ -13,15 +16,17 @@ export function Result({code, resultReady}) {
     
     return (
         <div>
-            <Backdrop
-                sx={{
-                    color: '#fff',
-                    zIndex: (theme) => theme.zIndex.drawer + 1,
+            <Fade
+                in={!resultReady}
+                style={{
+                    transitionDelay: resultReady ? '800ms' : '0ms',
                 }}
-                open={!resultReady}
+                unmountOnExit
             >
-                <CircularProgress color="inherit"/>
-            </Backdrop>
+                <Box sx={{width: '100%'}}>
+                    <LinearProgress color="inherit" variant="indeterminate"/>
+                </Box>
+            </Fade>
             <CodeMirror
                 value={code}
                 readOnly={true}
