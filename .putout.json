@@ -2,8 +2,8 @@
     "printer": "putout",
     "rules": {
         "remove-console": "off",
-        "convert-commonjs-to-esm": "off",
-        "convert-esm-to-commonjs": "off",
+        "nodejs/convert-commonjs-to-esm": "off",
+        "nodejs/convert-esm-to-commonjs": "off",
         "package-json/add-type": "off",
         "promises/add-missing-await": "off",
         "nodejs": "off"

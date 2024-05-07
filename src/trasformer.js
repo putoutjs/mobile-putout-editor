@@ -66,6 +66,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
             ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
             ['convert-optional-to-logical', pluginConvertOptionalToLogical],
             ['merge-destructuring-properties', pluginMergeDestructuringProperties],
+            ['nodejs', pluginNodejs],
         ],
     });
     
@@ -112,9 +113,8 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
     
     setError(error);
     
-    if (error) {
+    if (error)
         return;
-    }
     
     const {code} = result;
     setCode(code);

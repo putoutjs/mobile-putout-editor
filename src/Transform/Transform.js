@@ -1,7 +1,4 @@
-import {
-    useCallback,
-    useEffect,
-} from 'react';
+import {useCallback, useEffect} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
 import {createTransformRunner} from '../trasformer.js';
@@ -68,4 +65,3 @@ export function Transform({gistReady, setResultReady, source, transform, setCode
         />
     );
 }
-

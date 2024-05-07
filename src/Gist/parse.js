@@ -7,12 +7,11 @@ import {
 function getIDAndRevisionFromHash() {
     const match = global.location.hash.match(/^#\/(?!gist\/)([^/]+)(?:\/(latest|\d*))?/);
     
-    if (match) {
+    if (match)
         return {
             id: match[1],
             rev: match[2] || 0,
         };
-    }
     
     return null;
 }
@@ -20,9 +19,8 @@ function getIDAndRevisionFromHash() {
 function fetchSnippet(snippetID, revisionID = 'latest') {
     return api(`/parse/${snippetID}/${revisionID}`)
         .then((response) => {
-            if (response.ok) {
+            if (response.ok)
                 return response.json();
-            }
             
             switch(response.status) {
             case 404:
@@ -53,9 +51,8 @@ export function updateHash(revision) {
 export function fetchFromURL() {
     const urlParameters = getIDAndRevisionFromHash();
     
-    if (urlParameters) {
+    if (urlParameters)
         return fetchSnippet(urlParameters.id, urlParameters.rev);
-    }
     
     return Promise.resolve(null);
 }
@@ -110,9 +107,8 @@ class Revision {
     getTransformCode() {
         const {transform} = this._data;
         
-        if (transform) {
+        if (transform)
             return transform;
-        }
         
         if (this._data.toolID) {
             // Default transforms where never stored
@@ -125,9 +121,8 @@ class Revision {
     getParserID() {
         const transformerID = this.getTransformerID();
         
-        if (transformerID) {
+        if (transformerID)
             return getTransformerByID(transformerID).defaultParserID;
-        }
         
         return this._data.parserID;
     }
@@ -142,9 +137,8 @@ class Revision {
     getParserSettings() {
         const {settings} = this._data;
         
-        if (!settings) {
+        if (!settings)
             return null;
-        }
         
         const parserSettings = settings[this.getParserID()];
         
