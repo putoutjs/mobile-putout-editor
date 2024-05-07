@@ -1,3 +1,8 @@
+2024.05.07, v1.13.1
+
+fix:
+- bb76439 transformer: nodejs plugin
+
 2024.05.07, v1.13.0
 
 feature:
