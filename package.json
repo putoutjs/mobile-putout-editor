@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@putout/plugin-react-hooks": "^5.0.0",
+    "@putout/plugin-react-hooks": "^6.0.0",
     "eslint": "^8.19.0",
     "eslint-plugin-putout": "^21.0.2",
     "madrun": "^10.0.1",
