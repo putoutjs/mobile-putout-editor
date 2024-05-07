@@ -43,7 +43,6 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         pluginConvertESMToCommonJS,
         pluginConvertOptionalToLogical,
         pluginMergeDestructuringProperties,
-        pluginNodejs,
     ] = await Promise.all([
         import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
@@ -66,7 +65,6 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
             ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
             ['convert-optional-to-logical', pluginConvertOptionalToLogical],
             ['merge-destructuring-properties', pluginMergeDestructuringProperties],
-            ['nodejs', pluginNodejs],
         ],
     });
     
