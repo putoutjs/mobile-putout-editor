@@ -1,8 +1,9 @@
 import tryToCatch from 'try-to-catch';
 import tryCatch from 'try-catch';
+import {stringify} from 'flatted';
 
+const isFn = (a) => typeof a === 'function';
 const noop = () => {};
-const {stringify} = JSON;
 
 export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
@@ -74,7 +75,9 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         setFinalTransform(code);
     
     const console = {
-        log: (a) => setInfo(a),
+        log: (a) => {
+            setInfo(convertToString(a));
+        },
     };
     
     const fn = Function('require', 'module', 'exports', 'console', code);
@@ -128,3 +131,14 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
         return;
     }
 };
+
+function convertToString(info) {
+    if (isFn(info))
+        return String(info);
+    
+    if (info?.node)
+        return String(info);
+    
+    return stringify(info);
+}
+

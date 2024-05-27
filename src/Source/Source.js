@@ -25,6 +25,7 @@ export function Source({source, transform, setCode, setSource, setTransform, set
         setFinalTransform,
         setError,
         setInfo,
+        setResultReady,
     ]);
     
     const extensions = [

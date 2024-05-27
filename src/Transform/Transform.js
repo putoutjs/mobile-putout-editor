@@ -29,6 +29,7 @@ export function Transform({gistReady, setResultReady, source, transform, setCode
         setError,
         setInfo,
         gistReady,
+        setResultReady,
     ]);
     
     useEffect(() => {

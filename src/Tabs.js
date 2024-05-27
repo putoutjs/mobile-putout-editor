@@ -142,9 +142,8 @@ export default function FullWidthTabs(props) {
                 />
             </TabPanel>
             {error && <Alert severity="error">{String(error)}</Alert>}
-            {info && <Alert severity="info">{String(info)}</Alert>}
+            {info && <Alert severity="info">{info}</Alert>}
             {success && <Alert severity="success">{success}</Alert>}
         </Box>
     );
 }
-
