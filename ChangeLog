@@ -1,3 +1,8 @@
+2024.05.27, v1.14.0
+
+feature:
+- 2552d8f log: recursive objects
+
 2024.05.07, v1.13.1
 
 fix:
