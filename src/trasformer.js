@@ -1,7 +1,7 @@
 import tryToCatch from 'try-to-catch';
 import tryCatch from 'try-catch';
-import {stringify} from 'flatted';
 
+const {stringify} = JSON;
 const isFn = (a) => typeof a === 'function';
 const noop = () => {};
 
