@@ -1,3 +1,8 @@
+2024.06.10, v1.14.1
+
+fix:
+- d30ce24 get rid of flatted
+
 2024.05.27, v1.14.0
 
 feature:
