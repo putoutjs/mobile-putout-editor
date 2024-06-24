@@ -1,6 +1,6 @@
+import wraptile from 'wraptile';
 import {create} from '../Gist/gist.js';
 import DefaultSettings from '../Gist/DefaultSettings.js';
-import wraptile from 'wraptile';
 
 export const createSave = wraptile(async ({close, source, transform, setSuccess}) => {
     close();

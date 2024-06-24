@@ -1,19 +1,13 @@
+import {useState, useEffect} from 'react';
+import once from 'once';
+import {Fade, LinearProgress} from '@mui/material';
+import Box from '@mui/material/Box';
 import './App.css';
 import Tabs from './Tabs.js';
 import MainMenu from './Menu/Menu.js';
-import {
-    useState,
-    useEffect,
-} from 'react';
 import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {fetchFromURL} from './Gist/gist.js';
-import once from 'once';
-import {
-    Fade,
-    LinearProgress,
-} from '@mui/material';
-import Box from '@mui/material/Box';
 
 const run = once(async ({setSource, setTransform, setGistReady}) => {
     if (!global.location.hash)
@@ -52,7 +46,9 @@ function App() {
                 }}
                 unmountOnExit
             >
-                <Box sx={{width: '100%'}}>
+                <Box sx={{
+                    width: '100%',
+                }}>
                     <LinearProgress color="inherit" variant="indeterminate"/>
                 </Box>
             </Fade>

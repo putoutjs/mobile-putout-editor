@@ -110,10 +110,9 @@ class Revision {
         if (transform)
             return transform;
         
-        if (this._data.toolID) {
+        if (this._data.toolID)
             // Default transforms where never stored
             return getTransformerByID(this._data.toolID).defaultTransform;
-        }
         
         return '';
     }

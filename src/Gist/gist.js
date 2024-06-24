@@ -76,11 +76,10 @@ export function create(data) {
 export function update(revision, data) {
     // Fetch latest version of snippet
     return fetchSnippet(revision.getSnippetID()).then((latestRevision) => {
-        if (latestRevision.getTransformerID() && !data.toolID) {
+        if (latestRevision.getTransformerID() && !data.toolID)
             // Revision was updated to *remove* the transformer, hence we have
             // to signal the server to delete the transform.js file
             data.transform = null;
-        }
         
         return api(`/gist/${revision.getSnippetID()}`, {
             method: 'PATCH',
