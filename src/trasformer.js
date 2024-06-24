@@ -30,7 +30,7 @@ export const parseSource = async (value) => {
     return stringify(program, null, 4);
 };
 
-export const createTransform = async ({type, value, setInfo, setFinalTransform, putout}) => {
+export const createTransform = async ({type, value, setInfo, setError, setFinalTransform, putout}) => {
     const exports = {};
     const module = {
         exports,
@@ -45,7 +45,7 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         pluginConvertOptionalToLogical,
         pluginMergeDestructuringProperties,
     ] = await Promise.all([
-        import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-putout@20.9.1?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle'),
@@ -54,20 +54,31 @@ export const createTransform = async ({type, value, setInfo, setFinalTransform, 
         import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle'),
     ]);
     
+    const plugins = [
+        ['declare', pluginDeclare.default],
+        ['declare-before-reference', pluginDeclareBeforeReference.default],
+        ['putout', pluginPutout.default],
+        ['convert-const-to-let', pluginConvertConstToLet.default],
+        ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
+        ['convert-optional-to-logical', pluginConvertOptionalToLogical],
+        ['merge-destructuring-properties', pluginMergeDestructuringProperties],
+    ];
+    
     const {code} = putout(value, {
-        printer: 'putout',
-        fixCount: 10,
+        fix: true,
         isTS: true,
-        plugins: [
-            ['declare', pluginDeclare.default],
-            ['declare-before-reference', pluginDeclareBeforeReference.default],
-            ['putout', pluginPutout.default],
-            ['convert-const-to-let', pluginConvertConstToLet.default],
-            ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
-            ['convert-optional-to-logical', pluginConvertOptionalToLogical],
-            ['merge-destructuring-properties', pluginMergeDestructuringProperties],
-        ],
+        plugins,
     });
+    
+    // after fix get places
+    const {places} = putout(code, {
+        fix: false,
+        isTS: true,
+        plugins,
+    });
+    
+    if (places.length)
+        setError(places[0].message);
     
     setInfo('');
     
@@ -95,6 +106,7 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
         type,
         value,
         setInfo,
+        setError,
         putout,
         setFinalTransform,
     });
@@ -112,10 +124,10 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
         ],
     });
     
-    setError(error);
-    
-    if (error)
+    if (error) {
+        setError(error);
         return;
+    }
     
     const {code} = result;
     setCode(code);
@@ -141,4 +153,3 @@ function convertToString(info) {
     
     return stringify(info);
 }
-
