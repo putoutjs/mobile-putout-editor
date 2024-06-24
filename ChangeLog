@@ -1,3 +1,8 @@
+2024.06.24, v1.15.0
+
+feature:
+- c3188dc mobile-putout-editor: log errors
+
 2024.06.10, v1.14.1
 
 fix:
