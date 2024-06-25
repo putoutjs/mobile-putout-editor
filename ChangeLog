@@ -1,3 +1,8 @@
+2024.06.25, v1.15.1
+
+feature:
+- 5ba5005 mobile-putout-editor: check-replace-code: once: disable
+
 2024.06.24, v1.15.0
 
 feature:
