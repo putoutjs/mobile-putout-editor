@@ -64,17 +64,15 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         ['merge-destructuring-properties', pluginMergeDestructuringProperties],
     ];
     
-    const {code} = putout(value, {
+    const {code, places} = putout(value, {
         fix: true,
         isTS: true,
         plugins,
-    });
-    
-    // after fix get places
-    const {places} = putout(code, {
-        fix: false,
-        isTS: true,
-        plugins,
+        rules: {
+            'putout/check-replace-code': ['on', {
+                once: false,
+            }],
+        },
     });
     
     if (places.length)
