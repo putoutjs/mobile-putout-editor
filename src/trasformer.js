@@ -45,7 +45,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         pluginConvertOptionalToLogical,
         pluginMergeDestructuringProperties,
     ] = await Promise.all([
-        import('https://esm.sh/@putout/plugin-putout@20.9.1?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle'),
@@ -67,12 +67,12 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
     const {code, places} = putout(value, {
         fix: true,
         isTS: true,
-        plugins,
         rules: {
             'putout/check-replace-code': ['on', {
                 once: false,
             }],
         },
+        plugins,
     });
     
     if (places.length)
