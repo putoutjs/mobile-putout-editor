@@ -1,9 +1,10 @@
 import {useCallback, useEffect} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
+import {vim} from '@replit/codemirror-vim';
 import {javascript} from '@codemirror/lang-javascript';
 import {createTransformRunner} from '../trasformer.js';
 
-export function Transform({gistReady, setResultReady, source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
+export function Transform({isVim, gistReady, setResultReady, source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo}) {
     const onChange = useCallback((value) => {
         if (!gistReady)
             return;
@@ -46,11 +47,12 @@ export function Transform({gistReady, setResultReady, source, transform, setCode
     ]);
     
     const extensions = [
+        isVim && vim(),
         javascript({
             jsx: true,
             typescript: true,
         }),
-    ];
+    ].filter(Boolean);
     
     const value = gistReady ? transform : '';
     

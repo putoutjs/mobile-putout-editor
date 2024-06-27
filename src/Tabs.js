@@ -9,7 +9,7 @@ import {useState} from 'react';
 import DefaultSource from './Source/DefaultSource.js';
 import DefaultTransform from './Transform/DefaultTransform.js';
 import {Transform} from './Transform/Transform.js';
-import {FinalTransform} from './FinalTransform.js';
+import {Cooked} from './Cooked.js';
 import {Result} from './Result.js';
 import {AST} from './AST.js';
 import {Source} from './Source/Source.js';
@@ -54,7 +54,7 @@ function a11yProps(index) {
     };
 }
 
-export default function FullWidthTabs(props) {
+export default function MainTabs(props) {
     const {
         source,
         setSource,
@@ -66,6 +66,7 @@ export default function FullWidthTabs(props) {
         setInfo,
         success,
         gistReady,
+        isVim,
     } = props;
     
     const [value, setValue] = useState(0);
@@ -100,6 +101,7 @@ export default function FullWidthTabs(props) {
             </AppBar>
             <TabPanel value={value} index={0}>
                 <Transform
+                    isVim={isVim}
                     transform={transform}
                     setTransform={setTransform}
                     source={source}
@@ -113,6 +115,7 @@ export default function FullWidthTabs(props) {
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Source
+                    isVim={isVim}
                     setResultReady={setResultReady}
                     source={source}
                     transform={transform}
@@ -126,18 +129,21 @@ export default function FullWidthTabs(props) {
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Result
+                    isVim={isVim}
                     resultReady={resultReady}
                     code={code}
                 />
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <AST
+                    isVim={isVim}
                     setError={setError}
                     source={source}
                 />
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <FinalTransform
+                <Cooked
+                    isVim={isVim}
                     finalTransform={finalTransform}
                 />
             </TabPanel>

@@ -1,13 +1,11 @@
-import {
-    useEffect,
-    useState,
-} from 'react';
+import {useEffect, useState} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import {json} from '@codemirror/lang-json';
+import {vim} from '@replit/codemirror-vim';
 import tryToCatch from 'try-to-catch';
 import {parseSource} from './trasformer.js';
 
-export function AST({source, setError}) {
+export function AST({isVim, source, setError}) {
     const [ast, setAST] = useState(`Fasten your seatbelts... 🚀`);
     
     useEffect(() => {
@@ -22,6 +20,11 @@ export function AST({source, setError}) {
         fn();
     }, [source, setError]);
     
+    const extensions = [
+        isVim && vim(),
+        json(),
+    ].filter(Boolean);
+    
     return (
         <CodeMirror
             value={ast}
@@ -31,9 +34,7 @@ export function AST({source, setError}) {
             width="100%"
             readOnly={true}
             theme="dark"
-            extensions={[
-                json(),
-            ]}
+            extensions={extensions}
         />
     );
 }

@@ -1,9 +1,10 @@
 import {useCallback} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
+import {vim} from '@replit/codemirror-vim';
 import {javascript} from '@codemirror/lang-javascript';
 import {createTransformRunner} from '../trasformer.js';
 
-export function Source({source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo, setResultReady}) {
+export function Source({isVim, source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo, setResultReady}) {
     const onChange = useCallback((value) => {
         const runTransform = createTransformRunner('source');
         
@@ -29,11 +30,12 @@ export function Source({source, transform, setCode, setSource, setTransform, set
     ]);
     
     const extensions = [
+        isVim && vim(),
         javascript({
             jsx: true,
             typescript: true,
         }),
-    ];
+    ].filter(Boolean);
     
     return (
         <CodeMirror

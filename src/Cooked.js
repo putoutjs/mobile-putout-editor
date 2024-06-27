@@ -1,13 +1,15 @@
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
+import {vim} from '@replit/codemirror-vim';
 
-export function FinalTransform({finalTransform}) {
+export function Cooked({isVim, finalTransform}) {
     const extensions = [
+        isVim && vim(),
         javascript({
             jsx: true,
             typescript: true,
         }),
-    ];
+    ].filter(Boolean);
     
     return (
         <CodeMirror

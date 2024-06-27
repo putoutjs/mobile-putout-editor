@@ -1,7 +1,12 @@
-import {useState, useEffect} from 'react';
-import once from 'once';
+import {
+    useState,
+    useEffect,
+    useMemo,
+    useCallback,
+} from 'react';
 import {Fade, LinearProgress} from '@mui/material';
 import Box from '@mui/material/Box';
+import once from 'once';
 import './App.css';
 import Tabs from './Tabs.js';
 import MainMenu from './Menu/Menu.js';
@@ -28,8 +33,19 @@ function App() {
     const [info, setInfo] = useState(null);
     const [success, setSuccess] = useState(null);
     const [gistReady, setGistReady] = useState(!global.location.hash);
+    const [isVim, setIsVim] = useState(false);
+    
+    const onKeydown = once(() => {
+        window.addEventListener('keydown', function on(e) {
+            if (e.key === 'Escape') {
+                setIsVim(true);
+                document.removeEventListener('keydown', on);
+            }
+        });
+    });
     
     useEffect(() => {
+        onKeydown();
         run({
             setTransform,
             setSource,
@@ -46,9 +62,11 @@ function App() {
                 }}
                 unmountOnExit
             >
-                <Box sx={{
-                    width: '100%',
-                }}>
+                <Box
+                    sx={{
+                        width: '100%',
+                    }}
+                >
                     <LinearProgress color="inherit" variant="indeterminate"/>
                 </Box>
             </Fade>
@@ -73,9 +91,11 @@ function App() {
                 success={success}
                 setSuccess={setSuccess}
                 gistReady={gistReady}
+                isVim={isVim}
             />
         </div>
     );
 }
 
 export default App;
+

@@ -122,10 +122,10 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
         ],
     });
     
-    if (error) {
-        setError(error);
+    setError(error);
+    
+    if (error)
         return;
-    }
     
     const {code} = result;
     setCode(code);
@@ -151,3 +151,4 @@ function convertToString(info) {
     
     return stringify(info);
 }
+

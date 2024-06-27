@@ -1,18 +1,20 @@
 import CodeMirror from '@uiw/react-codemirror';
 import {javascript} from '@codemirror/lang-javascript';
+import {vim} from '@replit/codemirror-vim';
 import {
     Fade,
     LinearProgress,
 } from '@mui/material';
 import Box from '@mui/material/Box';
 
-export function Result({code, resultReady}) {
+export function Result({isVim, code, resultReady}) {
     const extensions = [
+        isVim && vim(),
         javascript({
             jsx: true,
             typescript: true,
         }),
-    ];
+    ].filter(Boolean);
     
     return (
         <div>
