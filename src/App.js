@@ -1,7 +1,6 @@
 import {
     useState,
     useEffect,
-    useMemo,
     useCallback,
 } from 'react';
 import {Fade, LinearProgress} from '@mui/material';
@@ -35,23 +34,23 @@ function App() {
     const [gistReady, setGistReady] = useState(!global.location.hash);
     const [isVim, setIsVim] = useState(false);
     
-    const onKeydown = once(() => {
+    const onKeydown = useCallback(() => {
         window.addEventListener('keydown', function on(e) {
             if (e.key === 'Escape') {
                 setIsVim(true);
-                document.removeEventListener('keydown', on);
+                window.removeEventListener('keydown', on);
             }
         });
-    });
+    }, [setIsVim]);
     
     useEffect(() => {
-        onKeydown();
+        onKeydown(setIsVim);
         run({
             setTransform,
             setSource,
             setGistReady,
         });
-    }, []);
+    }, [onKeydown]);
     
     return (
         <div className="App">
@@ -98,4 +97,3 @@ function App() {
 }
 
 export default App;
-
