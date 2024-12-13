@@ -1,3 +1,11 @@
+2024.12.13, v1.18.0
+
+feature:
+- f8fe38a mobile-putout-editor: apply-optional-chaining -> optional-chaining
+- b7f4e74 putout-editor-react: putout v37.0.1
+- 2d6c0f0 putout-editor-react: eslint-plugin-putout v23.1.0
+- 9451de9 putout-editor-react: putout v36.4.2
+
 2024.07.01, v1.17.0
 
 feature:
