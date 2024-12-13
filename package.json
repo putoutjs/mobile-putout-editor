@@ -50,7 +50,7 @@
     "eslint-plugin-putout": "^23.1.0",
     "madrun": "^10.0.1",
     "once": "^1.4.0",
-    "putout": "^36.4.2",
+    "putout": "^37.0.1",
     "wraptile": "^3.0.0"
   }
 }
