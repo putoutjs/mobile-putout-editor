@@ -42,7 +42,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         pluginDeclareBeforeReference,
         pluginConvertConstToLet,
         pluginConvertESMToCommonJS,
-        pluginConvertOptionalToLogical,
+        pluginOptionalChaining,
         pluginMergeDestructuringProperties,
     ] = await Promise.all([
         import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
@@ -50,7 +50,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-nodejs/convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle'),
-        import('https://esm.sh/@putout/plugin-convert-optional-to-logical?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-optional-chaining?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle'),
     ]);
     
@@ -60,7 +60,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         ['putout', pluginPutout.default],
         ['convert-const-to-let', pluginConvertConstToLet.default],
         ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
-        ['convert-optional-to-logical', pluginConvertOptionalToLogical],
+        ['optional-chaining', pluginOptionalChaining],
         ['merge-destructuring-properties', pluginMergeDestructuringProperties],
     ];
     
@@ -151,4 +151,3 @@ function convertToString(info) {
     
     return stringify(info);
 }
-

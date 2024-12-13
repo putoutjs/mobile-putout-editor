@@ -38,4 +38,3 @@ export function AST({isVim, source, setError}) {
         />
     );
 }
-

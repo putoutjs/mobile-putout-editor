@@ -43,9 +43,8 @@ export function matchesURL() {
 
 export function updateHash(revision) {
     const rev = revision.getRevisionID();
-    const newHash = '/' + revision.getSnippetID() + (rev ? `/${rev}` : '');
     
-    global.location.hash = newHash;
+    global.location.hash = '/' + revision.getSnippetID() + (rev ? `/${rev}` : '');
 }
 
 export function fetchFromURL() {
