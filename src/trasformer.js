@@ -108,8 +108,10 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
 
 export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setResultReady = noop, setFinalTransform}) => {
     const putout = (await import('https://esm.sh/@putout/bundle@3')).default;
+    let errorTransform;
+    let pluginTransform;
     
-    const [errorTransform, pluginTransform] = await tryToCatch(createTransform, {
+    [errorTransform, pluginTransform] = await tryToCatch(createTransform, {
         type,
         value,
         setInfo,
@@ -119,8 +121,25 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
     });
     
     if (errorTransform) {
-        setError(errorTransform);
-        return;
+        const {lint, plugins} = await import('https://esm.sh/flatlint/with-plugins');
+        
+        [value] = await lint(source, {
+            plugins,
+        });
+        
+        [errorTransform, pluginTransform] = await tryToCatch(createTransform, {
+            type,
+            value,
+            setInfo,
+            setError,
+            putout,
+            setFinalTransform,
+        });
+        
+        if (errorTransform) {
+            setError(errorTransform);
+            return;
+        }
     }
     
     const [error, result] = tryCatch(putout, source, {
@@ -160,3 +179,4 @@ function convertToString(info) {
     
     return stringify(info);
 }
+
