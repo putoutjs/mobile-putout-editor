@@ -45,6 +45,8 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         pluginOptionalChaining,
         pluginMergeDestructuringProperties,
         pluginExtractKeywordsFromVariables,
+        pluginTypes,
+        pluginMaybe,
     ] = await Promise.all([
         import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
@@ -54,12 +56,16 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         import('https://esm.sh/@putout/plugin-optional-chaining?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-extract-keywords-from-variables?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-types?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-maybe?alias=putout:@putout/bundle&deps=@putout/bundle'),
     ]);
     
     const plugins = [
         ['declare', pluginDeclare.default],
         ['declare-before-reference', pluginDeclareBeforeReference.default],
         ['putout', pluginPutout.default],
+        ['types', pluginTypes.default],
+        ['maybe', pluginMaybe.default],
         ['convert-const-to-let', pluginConvertConstToLet.default],
         ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
         ['extract-keyword-from-variables', pluginExtractKeywordsFromVariables],
