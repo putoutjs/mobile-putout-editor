@@ -1,3 +1,8 @@
+2025.01.18, v1.19.0
+
+feature:
+- d54168b add extract-keywords-from-variables
+
 2024.12.13, v1.18.0
 
 feature:
