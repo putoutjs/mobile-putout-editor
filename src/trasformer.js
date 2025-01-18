@@ -160,4 +160,3 @@ function convertToString(info) {
     
     return stringify(info);
 }
-

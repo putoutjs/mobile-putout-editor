@@ -33,9 +33,7 @@ function fetchSnippet(snippetID, revisionID = 'latest') {
         .then((response) => new Revision(response));
 }
 
-export function owns(snippet) {
-    return snippet instanceof Revision;
-}
+export const owns = (snippet) => snippet instanceof Revision;
 
 export function matchesURL() {
     return getIDAndRevisionFromHash() !== null;

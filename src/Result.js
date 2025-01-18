@@ -22,9 +22,11 @@ export function Result({isVim, code, resultReady}) {
                 }}
                 unmountOnExit
             >
-                <Box sx={{
-                    width: '100%',
-                }}>
+                <Box
+                    sx={{
+                        width: '100%',
+                    }}
+                >
                     <LinearProgress color="inherit" variant="indeterminate"/>
                 </Box>
             </Fade>
