@@ -44,6 +44,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         pluginConvertESMToCommonJS,
         pluginOptionalChaining,
         pluginMergeDestructuringProperties,
+        pluginExtractKeywordsFromVariables,
     ] = await Promise.all([
         import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
@@ -52,6 +53,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         import('https://esm.sh/@putout/plugin-nodejs/convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-optional-chaining?alias=putout:@putout/bundle&deps=@putout/bundle'),
         import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-extract-keywords-from-variables?alias=putout:@putout/bundle&deps=@putout/bundle'),
     ]);
     
     const plugins = [
@@ -60,6 +62,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         ['putout', pluginPutout.default],
         ['convert-const-to-let', pluginConvertConstToLet.default],
         ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
+        ['extract-keyword-from-variables', pluginExtractKeywordsFromVariables],
         ['optional-chaining', pluginOptionalChaining],
         ['merge-destructuring-properties', pluginMergeDestructuringProperties],
     ];
@@ -151,3 +154,4 @@ function convertToString(info) {
     
     return stringify(info);
 }
+
