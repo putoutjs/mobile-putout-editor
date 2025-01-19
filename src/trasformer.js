@@ -123,7 +123,7 @@ export const createTransformRunner = (type) => async (value, {source, setInfo, s
     if (errorTransform) {
         const {lint, plugins} = await import('https://esm.sh/flatlint/with-plugins');
         
-        [value] = await lint(source, {
+        [value] = await lint(value, {
             plugins,
         });
         
