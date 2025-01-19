@@ -1,3 +1,8 @@
+2025.01.19, v1.21.3
+
+feature:
+- f19cd72 putout-editor-react: flatlint v1.64.0
+
 2025.01.19, v1.21.2
 
 feature:
