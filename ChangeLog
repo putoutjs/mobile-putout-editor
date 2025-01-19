@@ -1,3 +1,8 @@
+2025.01.19, v1.21.1
+
+fix:
+- 79c824d transformer: flatlint
+
 2025.01.18, v1.21.0
 
 feature:
