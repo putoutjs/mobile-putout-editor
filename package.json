@@ -18,7 +18,7 @@
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.4.3",
     "@uiw/react-codemirror": "^4.11.4",
-    "flatlint": "^1.58.0",
+    "flatlint": "^1.63.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
