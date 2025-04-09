@@ -1,3 +1,15 @@
+2025.04.09, v1.22.0
+
+fix:
+- 76bc4f6 mobile-putout-editor: defaults
+
+feature:
+- 9c9647f putout-editor-react: flatlint v3.0.0
+- 81256bc putout-editor-react: madrun v11.0.1
+- 4836521 putout-editor-react: putout v40.0.1
+- c227538 putout-editor-react: eslint v9.24.0
+- 29ba647 putout-editor-react: eslint-plugin-putout v26.1.0
+
 2025.01.19, v1.21.3
 
 feature:
