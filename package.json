@@ -49,7 +49,7 @@
     "@putout/plugin-react-hooks": "^6.0.0",
     "eslint": "^9.24.0",
     "eslint-plugin-putout": "^26.1.0",
-    "madrun": "^10.0.1",
+    "madrun": "^11.0.1",
     "once": "^1.4.0",
     "putout": "^40.0.1",
     "wraptile": "^3.0.0"
