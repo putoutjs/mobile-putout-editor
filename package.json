@@ -1,7 +1,6 @@
 {
   "name": "putout-editor-react",
   "version": "1.21.3",
-  "type": "module",
   "private": true,
   "repository": {
     "type": "git",

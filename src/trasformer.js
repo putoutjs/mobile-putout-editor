@@ -7,7 +7,7 @@ const noop = () => {};
 
 export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
-    const {traverse} = await import('https://esm.sh/@putout/bundle@3');
+    const {traverse} = await import('https://esm.sh/@putout/bundle@4');
     const ast = parse(value, {
         isTS: true,
     });
@@ -61,12 +61,12 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
     ]);
     
     const plugins = [
-        ['declare', pluginDeclare.default],
-        ['declare-before-reference', pluginDeclareBeforeReference.default],
-        ['putout', pluginPutout.default],
-        ['types', pluginTypes.default],
-        ['maybe', pluginMaybe.default],
-        ['convert-const-to-let', pluginConvertConstToLet.default],
+        ['declare', pluginDeclare],
+        ['declare-before-reference', pluginDeclareBeforeReference],
+        ['putout', pluginPutout],
+        ['types', pluginTypes],
+        ['maybe', pluginMaybe],
+        ['convert-const-to-let', pluginConvertConstToLet],
         ['convert-esm-to-commonjs', pluginConvertESMToCommonJS],
         ['extract-keyword-from-variables', pluginExtractKeywordsFromVariables],
         ['optional-chaining', pluginOptionalChaining],
@@ -107,7 +107,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
 };
 
 export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setResultReady = noop, setFinalTransform}) => {
-    const putout = (await import('https://esm.sh/@putout/bundle@3')).default;
+    const {putout} = await import('https://esm.sh/@putout/bundle@4');
     let errorTransform;
     let pluginTransform;
     
