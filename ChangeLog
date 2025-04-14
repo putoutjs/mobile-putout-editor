@@ -1,3 +1,8 @@
+2025.04.15, v1.23.0
+
+feature:
+- 5260888 mobile-putout-editor: add support of path
+
 2025.04.09, v1.22.0
 
 fix:
