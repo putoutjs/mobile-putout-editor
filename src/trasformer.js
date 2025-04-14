@@ -1,3 +1,4 @@
+import path from 'path-browserify';
 import tryToCatch from 'try-to-catch';
 import tryCatch from 'try-catch';
 
@@ -99,7 +100,13 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
     };
     
     const fn = Function('require', 'module', 'exports', 'console', code);
-    const require = () => putout;
+    
+    const require = (name) => {
+        if (name === 'path' || name === 'node:path')
+            return path;
+        
+        return putout;
+    };
     
     fn(require, module, exports, console);
     
