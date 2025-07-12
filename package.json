@@ -18,7 +18,7 @@
     "@replit/codemirror-vim": "^6.2.1",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^6.0.0",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.4.3",
     "@uiw/react-codemirror": "^4.11.4",
     "babel-jest": "^30.0.4",
@@ -73,9 +73,9 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "madrun scripts/test.js",
+    "start": "madrun start",
+    "build": "madrun build",
+    "test": "madrun test",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint"
   },
