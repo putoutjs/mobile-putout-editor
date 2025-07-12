@@ -5,7 +5,7 @@ const env = {
 };
 
 export default {
-    'start': () => [env, 'react-scripts start'],
+    'start': () => [env, 'node scripts/start.js'],
     'build': () => 'node scripts/build.js',
     'test': () => 'node scripts/test.js',
     'lint': () => 'putout .',
