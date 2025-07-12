@@ -6,9 +6,8 @@ const env = {
 
 export default {
     'start': () => [env, 'react-scripts start'],
-    'build': () => 'react-scripts build',
-    'test': () => 'react-scripts test',
-    'eject': () => 'react-scripts eject',
+    'build': () => 'node scripts/build.js',
+    'test': () => 'node scripts/test.js',
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
 };

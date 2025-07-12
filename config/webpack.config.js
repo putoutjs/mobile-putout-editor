@@ -16,6 +16,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+
 const paths = require('./paths');
 const modules = require('./modules');
 const getClientEnvironment = require('./env');
@@ -48,9 +49,6 @@ const babelRuntimeRegenerator = require.resolve('@babel/runtime/regenerator', {
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
-
-const emitErrorsAsWarnings = process.env.ESLINT_NO_DEV_ERRORS === 'true';
-const disableESLintPlugin = process.env.DISABLE_ESLINT_PLUGIN === 'true';
 
 const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 
@@ -287,7 +285,6 @@ module.exports = (webpackEnv) => {
             // https://github.com/facebook/create-react-app/issues/290
             
             // `web` extension prefixes have been added for better support
-            
             alias: {
                 'react-native': 'react-native-web',
                 // Allows for better profiling with ReactDevTools
@@ -384,9 +381,10 @@ module.exports = (webpackEnv) => {
                             loader: require.resolve('babel-loader'),
                             options: {
                                 customize: require.resolve('babel-preset-react-app/webpack-overrides'),
-                                presets: [[require.resolve('babel-preset-react-app'), {
-                                    runtime: hasJsxRuntime ? 'automatic' : 'classic',
-                                }],
+                                presets: [[
+                                    require.resolve('babel-preset-react-app'), {
+                                        runtime: hasJsxRuntime ? 'automatic' : 'classic',
+                                    }],
                                 ],
                                 
                                 plugins: [
