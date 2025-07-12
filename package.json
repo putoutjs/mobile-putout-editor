@@ -41,7 +41,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.0.4",
     "jest-resolve": "^30.0.2",
-    "jest-watch-typeahead": "^1.0.0",
+    "jest-watch-typeahead": "^3.0.1",
     "mini-css-extract-plugin": "^2.4.5",
     "montag": "^1.2.1",
     "postcss": "^8.4.4",
