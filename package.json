@@ -12,7 +12,7 @@
     "@codemirror/lang-json": "^6.0.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.14.3",
+    "@mui/icons-material": "^7.3.6",
     "@mui/material": "^5.9.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@replit/codemirror-vim": "^6.2.1",
