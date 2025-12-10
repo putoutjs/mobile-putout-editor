@@ -13,7 +13,7 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^7.3.6",
-    "@mui/material": "^5.9.0",
+    "@mui/material": "^7.3.6",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@replit/codemirror-vim": "^6.2.1",
     "@svgr/webpack": "^5.5.0",
