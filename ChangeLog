@@ -1,3 +1,19 @@
+2025.12.10, v1.24.0
+
+feature:
+- 118bbd2 mobile-putout-editor: postcss-preset-env v10.5.0
+- 0a05cdf mobile-putout-editor: source-map-loader v5.0.0
+- c3ebbfd mobile-putout-editor: @pmmmwh/react-refresh-webpack-plugin v0.6.2
+- 50afdc0 mobile-putout-editor: style-loader v4.0.0
+- b6cd48c mobile-putout-editor: web-vitals v5.1.0
+- e9bfdc1 mobile-putout-editor: tailwindcss v4.1.17
+- da6ddaf mobile-putout-editor: webpack-manifest-plugin v6.0.1
+- bfb8a1e mobile-putout-editor: workbox-webpack-plugin v7.4.0
+- 24de872 mobile-putout-editor: @mui/material v7.3.6
+- 212829f mobile-putout-editor: @mui/icons-material v7.3.6
+- b2e94f3 mobile-putout-editor: dotenv v17.2.3
+- 98730eb @putout/bundle v5
+
 2025.12.09, v1.23.2
 
 feature:
