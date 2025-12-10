@@ -114,7 +114,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
 };
 
 export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setResultReady = noop, setFinalTransform}) => {
-    const {putout} = await import('https://esm.sh/@putout/bundle@4');
+    const {putout} = await import('https://esm.sh/@putout/bundle@5');
     let errorTransform;
     let pluginTransform;
     
