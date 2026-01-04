@@ -118,4 +118,3 @@ function getModules() {
 }
 
 module.exports = getModules();
-

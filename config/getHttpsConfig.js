@@ -1,6 +1,6 @@
 'use strict';
 
-const tryCatch = require('try-catch');
+const {tryCatch} = require('try-catch');
 
 const fs = require('fs');
 const path = require('path');
@@ -42,6 +42,7 @@ function getHttpsConfig() {
         SSL_KEY_FILE,
         HTTPS,
     } = process.env;
+    
     const isHttps = HTTPS === 'true';
     
     if (isHttps && SSL_CRT_FILE && SSL_KEY_FILE) {
@@ -52,8 +53,11 @@ function getHttpsConfig() {
             key: readEnvFile(keyFile, 'SSL_KEY_FILE'),
         };
         
-        validateKeyAndCerts({...config,
-            keyFile, crtFile});
+        validateKeyAndCerts({
+            ...config,
+            keyFile,
+            crtFile,
+        });
         return config;
     }
     

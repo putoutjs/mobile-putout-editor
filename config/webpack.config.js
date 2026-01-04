@@ -200,8 +200,7 @@ module.exports = (webpackEnv) => {
             publicPath: paths.publicUrlOrPath,
             // Point sourcemap entries to original disk location (format as URL on Windows)
             devtoolModuleFilenameTemplate: isEnvProduction ? (info) => path
-                .relative(paths.appSrc, info
-                    .absoluteResourcePath)
+                .relative(paths.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/') : isEnvDevelopment && ((info) => path
                 .resolve(info.absoluteResourcePath)
                 .replace(/\\/g, '/')),

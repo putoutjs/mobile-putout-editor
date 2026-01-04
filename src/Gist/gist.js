@@ -76,7 +76,7 @@ export function update(revision, data) {
     return fetchSnippet(revision.getSnippetID()).then((latestRevision) => {
         if (latestRevision.getTransformerID() && !data.toolID)
             // Revision was updated to *remove* the transformer, hence we have
-            // to signal the server to delete the transform.js file
+        // to signal the server to delete the transform.js file
             data.transform = null;
         
         return api(`/gist/${revision.getSnippetID()}`, {

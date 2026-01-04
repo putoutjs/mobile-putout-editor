@@ -6,8 +6,7 @@
         "nodejs/convert-esm-to-commonjs": "off",
         "package-json/add-type": "off",
         "promises/add-missing-await": "off",
-        "nodejs": "off",
-        "try-catch": "off"
+        "nodejs": "off"
     },
     "plugins": [
         "react-hooks"

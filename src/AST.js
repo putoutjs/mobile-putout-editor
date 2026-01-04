@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import {json} from '@codemirror/lang-json';
 import {vim} from '@replit/codemirror-vim';
-import tryToCatch from 'try-to-catch';
+import {tryToCatch} from 'try-to-catch';
 import {parseSource} from './transformer.js';
 
 export function AST({isVim, source, setError}) {

@@ -1,6 +1,6 @@
 import path from 'path-browserify';
-import tryToCatch from 'try-to-catch';
-import tryCatch from 'try-catch';
+import {tryToCatch} from 'try-to-catch';
+import {tryCatch} from 'try-catch';
 
 const {stringify} = JSON;
 const isFn = (a) => typeof a === 'function';
@@ -187,4 +187,3 @@ function convertToString(info) {
     
     return stringify(info);
 }
-
