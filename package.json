@@ -65,7 +65,7 @@
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.1.17",
     "terser-webpack-plugin": "^5.2.5",
-    "try-catch": "^3.0.1",
+    "try-catch": "^4.0.6",
     "try-to-catch": "^3.0.1",
     "web-vitals": "^5.1.0",
     "webpack": "^5.64.4",
