@@ -8,7 +8,7 @@ const noop = () => {};
 
 export const parseSource = async (value) => {
     const {parse} = await import('https://esm.sh/@putout/engine-parser/babel');
-    const {traverse} = await import('https://esm.sh/@putout/bundle@5.1.3');
+    const {traverse} = await import('https://esm.sh/@putout/bundle');
     const ast = parse(value, {
         isTS: true,
     });
@@ -49,16 +49,16 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
         pluginTypes,
         pluginMaybe,
     ] = await Promise.all([
-        import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-nodejs/convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-optional-chaining?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-extract-keywords-from-variables?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-types?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
-        import('https://esm.sh/@putout/plugin-maybe?alias=putout:@putout/bundle&deps=@putout/bundle@5.1.3'),
+        import('https://esm.sh/@putout/plugin-putout?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-declare?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-declare-before-reference?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-convert-const-to-let?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-nodejs/convert-esm-to-commonjs?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-optional-chaining?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-merge-destructuring-properties?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-extract-keywords-from-variables?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-types?alias=putout:@putout/bundle&deps=@putout/bundle'),
+        import('https://esm.sh/@putout/plugin-maybe?alias=putout:@putout/bundle&deps=@putout/bundle'),
     ]);
     
     const plugins = [
@@ -114,7 +114,7 @@ export const createTransform = async ({type, value, setInfo, setError, setFinalT
 };
 
 export const createTransformRunner = (type) => async (value, {source, setInfo, setSource, setError, setCode, setTransform, setResultReady = noop, setFinalTransform}) => {
-    const {putout} = await import('https://esm.sh/@putout/bundle@5.1.3');
+    const {putout} = await import('https://esm.sh/@putout/bundle');
     let errorTransform;
     let pluginTransform;
     
