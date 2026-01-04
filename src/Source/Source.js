@@ -2,7 +2,7 @@ import {useCallback} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import {vim} from '@replit/codemirror-vim';
 import {javascript} from '@codemirror/lang-javascript';
-import {createTransformRunner} from '../trasformer.js';
+import {createTransformRunner} from '../transformer.js';
 
 export function Source({isVim, source, transform, setCode, setSource, setTransform, setFinalTransform, setError, setInfo, setResultReady}) {
     const onChange = useCallback((value) => {
