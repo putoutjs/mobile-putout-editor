@@ -116,8 +116,8 @@ checkBrowsers(paths.appPath, isInteractive)
         });
         
         for (const sig of ['SIGINT', 'SIGTERM']) {
-            process.on(sig, () => {
-                devServer.close();
+            process.on(sig, async () => {
+                await devServer.stop();
                 process.exit();
             });
         }

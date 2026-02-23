@@ -69,7 +69,7 @@
     "try-to-catch": "^4.0.2",
     "web-vitals": "^5.1.0",
     "webpack": "^5.64.4",
-    "webpack-dev-server": "^4.6.0",
+    "webpack-dev-server": "^5.2.3",
     "webpack-manifest-plugin": "^6.0.1",
     "workbox-webpack-plugin": "^7.4.0"
   },
