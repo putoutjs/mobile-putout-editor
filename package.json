@@ -100,7 +100,7 @@
     "@putout/plugin-react-hooks": "^9.0.0",
     "eslint": "^9.24.0",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-putout": "^29.0.2",
+    "eslint-plugin-putout": "^31.0.1",
     "eslint-plugin-react": "^7.37.5",
     "madrun": "^13.0.0",
     "once": "^1.4.0",
