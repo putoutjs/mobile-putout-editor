@@ -35,7 +35,7 @@
     "dotenv-expand": "^5.1.0",
     "eslint-webpack-plugin": "^5.0.2",
     "file-loader": "^6.2.0",
-    "flatlint": "^4.0.7",
+    "flatlint": "^5.1.0",
     "fs-extra": "^10.0.0",
     "globals": "^16.0.0",
     "html-webpack-plugin": "^5.5.0",
