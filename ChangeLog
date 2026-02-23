@@ -1,3 +1,12 @@
+2026.02.23, v1.25.1
+
+feature:
+- 5ed453b mobile-putout-editor: eslint v10.0.1
+- 1f3b194 mobile-putout-editor: eslint-plugin-putout v31.0.1
+- a08dc54 mobile-putout-editor: putout v42.0.15
+- 5356c2f mobile-putout-editor: madrun v13.0.0
+- 14dcbae mobile-putout-editor: flatlint v5.1.0
+
 2026.01.04, v1.25.0
 
 fix:
