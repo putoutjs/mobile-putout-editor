@@ -3,7 +3,7 @@ import api from './api.js';
 const HOST = 'https://putout.cloudcmd.io/';
 
 function getIDAndRevisionFromHash() {
-    const match = global.location.hash.match(/^#\/gist\/([^/]+)(?:\/[^/]+)?/);
+    const match = globalThis.location.hash.match(/^#\/gist\/([^/]+)(?:\/[^/]+)?/);
     
     if (match)
         return {

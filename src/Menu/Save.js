@@ -15,7 +15,7 @@ export const createSave = wraptile(async ({close, source, transform, setSuccess}
     const {id, history} = revision._gist;
     const link = `https://putout.cloudcmd.io/#/gist/${id}/${history[0].version}`;
     
-    global.location.hash = revision.getPath();
+    globalThis.location.hash = revision.getPath();
     
     setSuccess(<span>☝️Continue in 🐊<a href={link}>Putout Editor</a></span>);
 });

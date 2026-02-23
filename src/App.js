@@ -1,3 +1,4 @@
+import './App.css';
 import {
     useState,
     useEffect,
@@ -6,7 +7,6 @@ import {
 import {Fade, LinearProgress} from '@mui/material';
 import Box from '@mui/material/Box';
 import once from 'once';
-import './App.css';
 import Tabs from './Tabs.js';
 import MainMenu from './Menu/Menu.js';
 import DefaultSource from './Source/DefaultSource.js';
@@ -14,7 +14,7 @@ import DefaultTransform from './Transform/DefaultTransform.js';
 import {fetchFromURL} from './Gist/gist.js';
 
 const run = once(async ({setSource, setTransform, setGistReady}) => {
-    if (!global.location.hash)
+    if (!globalThis.location.hash)
         return;
     
     const revision = await fetchFromURL();
@@ -31,14 +31,14 @@ function App() {
     const [error, setError] = useState(null);
     const [info, setInfo] = useState(null);
     const [success, setSuccess] = useState(null);
-    const [gistReady, setGistReady] = useState(!global.location.hash);
+    const [gistReady, setGistReady] = useState(!globalThis.location.hash);
     const [isVim, setIsVim] = useState(false);
     
     const onKeydown = useCallback(() => {
-        window.addEventListener('keydown', function on(e) {
+        globalThis.addEventListener('keydown', function on(e) {
             if (e.key === 'Escape') {
                 setIsVim(true);
-                window.removeEventListener('keydown', on);
+                globalThis.removeEventListener('keydown', on);
             }
         });
     }, [setIsVim]);

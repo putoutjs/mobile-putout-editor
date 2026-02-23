@@ -17,7 +17,7 @@ function validateKeyAndCerts({cert, key, keyFile, crtFile}) {
         // publicEncrypt will throw an error with an invalid cert
         encrypted = crypto.publicEncrypt(cert, Buffer.from('test'));
     } catch(err) {
-        throw Error(`The certificate "${chalk.yellow(crtFile)}" is invalid.\n${err.message}`);
+        throw Error(`The certificate "${chalk.yellow(crtFile)}" is invalid.\n${err.message}`, {cause: err});
     }
     
     const [err] = tryCatch(crypto.privateDecrypt, key, encrypted);

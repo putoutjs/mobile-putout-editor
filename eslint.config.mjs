@@ -7,9 +7,7 @@ import globals from 'globals';
 export default defineConfig([
     safeAlign, {
         languageOptions: {
-            globals: {
-                ...globals.jest,
-            },
+            globals: globals.jest,
         },
         plugins: {
             react,
