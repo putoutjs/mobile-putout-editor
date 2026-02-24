@@ -2,6 +2,7 @@
   "name": "mobile-putout-editor",
   "version": "1.25.2",
   "private": true,
+  "description": "Mobile 🐊Putout Editor",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/putoutjs/mobile-putout-editor.git"
