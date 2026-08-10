@@ -18,8 +18,8 @@ const {spawn} = require('child_process');
 const rspack = require('@rspack/core');
 const {RspackDevServer} = require('@rspack/dev-server');
 const paths = require('../config/paths');
-const configFactory = require('../config/webpack.config');
-const createDevServerConfig = require('../config/webpackDevServer.config');
+const configFactory = require('../config/rspack.config');
+const createDevServerConfig = require('../config/rspackDevServer.config');
 
 const isInteractive = process.stdout.isTTY;
 

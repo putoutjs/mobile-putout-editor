@@ -36,7 +36,7 @@ const noopServiceWorker = (servedPath) => (req, res, next) => {
 module.exports = () => ({
     // RspackDevServer 4+ introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
-    // https://github.com/webpack/webpack-dev-server/issues/887
+    // https://github.com/webpack/webpack-dev-server/issues/887 (rspack-dev-server equivalent)
     allowedHosts: 'all',
     headers: {
         'Access-Control-Allow-Origin': '*',

@@ -102,27 +102,41 @@ module.exports = (webpackEnv) => {
         },
         module: {
             rules: [
-                // Process application JS with SWC.
-                // The built-in loader supports JSX, TypeScript, and some ESnext features.
+                // Process application JS with SWC (fast transform) + React Compiler (babel pass).
+                // Loaders run right-to-left: babel-loader runs React Compiler first,
+                // then builtin:swc-loader handles JSX/TS transform and sourcemaps.
                 {
                     test: /\.(js|mjs|jsx|ts|tsx)$/,
                     include: paths.appSrc,
-                    use: {
-                        loader: 'builtin:swc-loader',
-                        options: {
-                            detectSyntax: 'auto',
-                            jsc: {
-                                transform: {
-                                    react: {
-                                        runtime: 'automatic',
-                                        development: isEnvDevelopment,
-                                        refresh: isEnvDevelopment && shouldUseReactRefresh,
+                    use: [
+                        {
+                            loader: 'builtin:swc-loader',
+                            options: {
+                                detectSyntax: 'auto',
+                                jsc: {
+                                    transform: {
+                                        react: {
+                                            runtime: 'automatic',
+                                            development: isEnvDevelopment,
+                                            refresh: isEnvDevelopment && shouldUseReactRefresh,
+                                        },
                                     },
                                 },
+                                sourceMaps: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
                             },
-                            sourceMaps: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
                         },
-                    },
+                        {
+                            // React Compiler pass — runs before SWC, emits memoized JS.
+                            loader: require.resolve('babel-loader'),
+                            options: {
+                                plugins: [['babel-plugin-react-compiler', {target: '19'}]],
+                                // Don't let babel transform syntax — swc handles that.
+                                presets: [],
+                                babelrc: false,
+                                configFile: false,
+                            },
+                        },
+                    ],
                 },
                 // Rspack native CSS pipeline — no css-loader/style-loader/CssExtractRspackPlugin needed.
                 // Plain CSS (global, ICSS composes): type 'css' handles injection in dev

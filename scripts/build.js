@@ -17,7 +17,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const zlib = require('zlib');
 const rspack = require('@rspack/core');
-const configFactory = require('../config/webpack.config');
+const configFactory = require('../config/rspack.config');
 const paths = require('../config/paths');
 
 // These sizes are pretty large. We'll warn for bundles exceeding them.
@@ -192,7 +192,7 @@ function printFileSizesAfterBuild(buildFolder, stats, warnAfterBundleGzipSize, w
     }
     
     if (hasWarned)
-        console.log('Bundle size is larger than the recommended size.\nBundle analysis can be found at https://webpack.js.org/guides/code-splitting/.');
+        console.log('Bundle size is larger than the recommended size.\nBundle analysis can be found at https://rspack.dev/guide/optimization/code-splitting.');
 }
 
 function walkDirectory(directory, callback) {
