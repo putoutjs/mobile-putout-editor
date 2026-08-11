@@ -78,6 +78,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@putout/plugin-react-hooks": "^9.0.0",
+    "@rspack/core": "^2.1.9",
+    "@rspack/dev-server": "^2.2.0",
     "eslint": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-putout": "^31.0.1",
