@@ -90,7 +90,9 @@
     "once": "^1.4.0",
     "path-browserify": "^1.0.1",
     "putout": "^42.0.15",
-    "wraptile": "^3.0.0"
+    "wraptile": "^3.0.0",
+    "postcss": "^8.4.47",
+    "postcss-loader": "^8.1.1"
   },
   "jest": {
     "roots": [
