@@ -147,12 +147,18 @@ module.exports = (webpackEnv) => {
                 {
                     test: cssRegex,
                     exclude: cssModuleRegex,
+                    use: [{
+                        loader: require.resolve('postcss-loader'),
+                    }],
                     type: 'css',
                     sideEffects: true,
                 },
                 // CSS Modules: type 'css/module' enables local scoping.
                 {
                     test: cssModuleRegex,
+                    use: [{
+                        loader: require.resolve('postcss-loader'),
+                    }],
                     type: 'css/module',
                 },
                 // SASS — run sass-loader first, then hand off to rspack native CSS.
@@ -223,7 +229,7 @@ module.exports = (webpackEnv) => {
                 },
                 {
                     // Exclude `js` files so the native CSS pipeline can handle CSS properly.
-                    exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+                    exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/, /\.css$/],
                     type: 'asset/resource',
                 },
             ],
