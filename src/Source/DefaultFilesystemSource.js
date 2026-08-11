@@ -1,4 +1,4 @@
-import montag from 'montag';
+import {montag} from 'montag';
 
 export default montag`
     __putout_processor_filesystem({

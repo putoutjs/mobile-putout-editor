@@ -129,7 +129,10 @@ module.exports = (webpackEnv) => {
                             // React Compiler pass — runs before SWC, emits memoized JS.
                             loader: require.resolve('babel-loader'),
                             options: {
-                                plugins: [['babel-plugin-react-compiler', {target: '19'}]],
+                                plugins: [
+                                    ['babel-plugin-react-compiler', {target: '19'}],
+                                    '@babel/plugin-syntax-jsx',
+                                ],
                                 // Don't let babel transform syntax — swc handles that.
                                 presets: [],
                                 babelrc: false,
@@ -209,24 +212,17 @@ module.exports = (webpackEnv) => {
                             titleProp: true,
                             ref: true,
                         },
-                    }, {
-                        loader: require.resolve('file-loader'),
-                        options: {
-                            name: 'static/media/[name].[hash].[ext]',
-                        },
                     }],
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'static/media/[name].[hash][ext]',
+                    },
                     issuer: {
                         and: [/.\.(ts|tsx|js|jsx|md|mdx)$/],
                     },
                 },
-                // "file" loader makes sure those assets get served by RspackDevServer.
-                // When you `import` an asset, you get its (virtual) filename.
-                // In production, they would get copied to the `build` folder.
-                // This loader doesn't use a "test" so it will catch all modules
-                // that fall through the other loaders.
                 {
-                    // Exclude `js` files to keep "css" loader working as it injects
-                    // its runtime that would otherwise be processed through "file" loader.
+                    // Exclude `js` files so the native CSS pipeline can handle CSS properly.
                     exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
                     type: 'asset/resource',
                 },

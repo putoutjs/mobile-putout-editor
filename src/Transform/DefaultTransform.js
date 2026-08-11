@@ -1,4 +1,4 @@
-import montag from 'montag';
+import {montag} from 'montag';
 
 export default montag`
 // https://git.io/JqcMn
