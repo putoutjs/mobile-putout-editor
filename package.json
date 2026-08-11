@@ -28,7 +28,7 @@
     "browserslist": "^4.18.1",
     "camelcase": "^9.0.0",
     "dotenv": "^17.2.3",
-    "dotenv-expand": "^5.1.0",
+    "dotenv-expand": "^1000.0.0",
     "flatlint": "^5.1.0",
     "fs-extra": "^10.0.0",
     "globals": "^17.3.0",
