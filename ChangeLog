@@ -1,3 +1,27 @@
+2026.08.11, v1.25.4
+
+fix:
+- da8355e css
+
+feature:
+- fc93dee mobile-putout-editor: web-vitals v6.1.0
+- 9b2b34e mobile-putout-editor: sass-loader v17.0.0
+- fc24956 mobile-putout-editor: react-refresh v0.18.0
+- 637b6e8 mobile-putout-editor: montag v2.0.1
+- 2b90f33 mobile-putout-editor: fs-extra v11.4.0
+- 4853a64 mobile-putout-editor: dotenv-expand v1000.0.0
+- fa98630 mobile-putout-editor: camelcase v9.0.0
+- 87ddb1e mobile-putout-editor: bfj v9.1.3
+- a428af0 mobile-putout-editor: @testing-library/jest-dom v7.0.1
+- 7a827d5 mobile-putout-editor: @svgr/webpack v8.1.0
+- f03f53d mobile-putout-editor: @mui/material v9.3.1
+- 914b716 mobile-putout-editor: @mui/icons-material v9.3.1
+- f49efa5 mobile-putout-editor: @babel/core v8.0.1
+- 167c5d0 mobile-putout-editor: @rspack/plugin-react-refresh v2.0.2
+- 4fb2013 mobile-putout-editor: @rspack/dev-server v2.2.0
+- 23e307a mobile-putout-editor: babel-loader v10.1.1
+- d51bd7c migrate to rspack
+
 2026.02.25, v1.25.3
 
 feature:
