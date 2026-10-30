@@ -4,8 +4,7 @@
     "include": ["src/**"],
     "exclude": [
         "**/*.spec.*",
-        "src/Gist/parse.js",
-        "src/setupTests.js"
+        "src/Gist/parse.js"
     ],
     "checkCoverage": true,
     "branches": 100,

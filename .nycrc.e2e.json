@@ -7,8 +7,7 @@
         "**/*.spec.*",
         "src/Gist/gist.js",
         "src/Gist/parse.js",
-        "src/reportWebVitals.js",
-        "src/setupTests.js"
+        "src/reportWebVitals.js"
     ],
     "check-coverage": true,
     "branches": 100,
