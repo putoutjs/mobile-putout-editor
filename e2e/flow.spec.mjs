@@ -38,3 +38,40 @@ test('flow: invalid source shows an error alert and keeps the previous result', 
     await expect(page.getByRole('alert')).not.toBeEmpty();
     await expect(page.locator('.cm-content').nth(1)).toContainText('else');
 });
+
+test('flow: a transform with a broken replace pattern reaches the Cooked tab', async ({page}) => {
+    await page.goto('/');
+    await replaceWith(page, `module.exports.replace = () => ({'__a ? __b': 'if (__a) __b'});`);
+    await page.getByRole('tab', {name: 'Cooked'}).click();
+    
+    await expect(page.locator('.cm-content')).toContainText(`'__a ? __b'`);
+});
+
+test('flow: require("path") in the transform is the path module', async ({page}) => {
+    await page.goto('/');
+    await replaceWith(page, `${transformHeader} console.log(require('path').sep);`);
+    
+    await expect(page.getByRole('alert')).toHaveText('"/"');
+});
+
+test('flow: console.log of a function shows its source', async ({page}) => {
+    await page.goto('/');
+    await replaceWith(page, `${transformHeader} console.log(function hello() {});`);
+    
+    await expect(page.getByRole('alert')).toContainText('function hello');
+});
+
+test('flow: console.log of an object with node shows its string form', async ({page}) => {
+    await page.goto('/');
+    await replaceWith(page, `${transformHeader} console.log({node: 1});`);
+    
+    await expect(page.getByRole('alert')).toHaveText('[object Object]');
+});
+
+test('flow: flatlint repairs a transform that does not parse', async ({page}) => {
+    await page.goto('/');
+    await replaceWith(page, `${transformHeader}\nconst a = [1, 2;`);
+    
+    await expect(page.locator('.cm-content')).toContainText('[1, 2];');
+    await expect(page.getByRole('alert')).toHaveCount(0);
+});
