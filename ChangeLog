@@ -1,3 +1,71 @@
+2026.10.31, v1.26.0
+
+fix:
+- 33a21e7 reportWebVitals: use onCLS, onINP, onFCP, onLCP, onTTFB
+- c695cf4 gist: drop unreachable empty revision branch
+- 9854a5f transformer: load Putout through putout-loader, no esm.sh
+- 19abbe8 rspack: browser stand-ins for node: modules and get-rule.cjs
+- f13ac4a deps
+
+feature:
+- 5ed12a7 mobile-putout-editor: react-refresh v0.19.0
+- 48199e3 mobile-putout-editor: dotenv v18.0.9
+- 9cbf99f mobile-putout-editor: camelcase v10.0.0
+- 3977ca4 mobile-putout-editor: @codemirror/view v6.43.15
+- 14610f6 actions: unit and e2e with coverage gates
+- 055b471 e2e: vim in every tab
+- 7e81917 e2e: transform flow cases for the runner branches
+- 5f67082 e2e: vim
+- 574eedd e2e: gist
+- fb7727e e2e: menu
+- 27a4a5a e2e: transform flow
+- e64ecf9 e2e: tabs
+- 611b959 coverage: 100% gate for e2e
+- 253def7 rspack: istanbul instrumentation when E2E_COVERAGE is set
+- 1bd1638 reportWebVitals: unit spec (red)
+- 2ecc0e0 index: unit spec
+- 05cfd47 app: unit spec
+- 935c91b menu: unit spec
+- 8b9e57a save: unit spec
+- 01f4166 tabs: unit spec
+- be575ba transform: unit spec
+- 408ad02 source: unit spec
+- 364ae1e result: unit spec
+- acf10f2 ast: unit spec
+- 149a5a7 transformer: unit spec
+- 516c78c gist: unit spec
+- bb65740 api: unit spec
+- 5efb61f defaults: unit spec
+- 941a724 cooked: unit spec
+- e224400 coverage: 100% gate for unit tests
+- 23e870e madrun: test, coverage and e2e scripts
+- 81df3d4 putout-loader: load Putout from npm with dynamic import
+- a53772e mobile-putout-editor: @putout/plugin-maybe v5.1.0
+- 466d3d0 mobile-putout-editor: @putout/plugin-types v10.6.0
+- 744552f mobile-putout-editor: @putout/plugin-extract-keywords-from-variables v3.0.0
+- 40c58e3 mobile-putout-editor: @putout/plugin-merge-destructuring-properties v12.3.1
+- e81c916 mobile-putout-editor: @putout/plugin-optional-chaining v3.1.0
+- 56141f8 mobile-putout-editor: @putout/plugin-nodejs v21.14.0
+- cf14e37 mobile-putout-editor: @putout/plugin-convert-const-to-let v5.0.1
+- 759f928 mobile-putout-editor: @putout/plugin-declare-before-reference v10.5.0
+- 19db189 mobile-putout-editor: @putout/plugin-declare v8.4.0
+- f109670 mobile-putout-editor: @putout/plugin-putout v29.36.0
+- a195709 mobile-putout-editor: @putout/bundle v5.6.4
+- 384d158 putout-loader: unit spec (red)
+- 74e1289 e2e: app loads Putout without esm.sh (red)
+- 9775e8b e2e: playwright config and fixtures
+- 8bc853e mobile-putout-editor: http-server v14.1.1
+- c4f0f87 mobile-putout-editor: nyc v18.0.0
+- 5f1c6e6 mobile-putout-editor: babel-plugin-istanbul v8.0.0
+- e30324f mobile-putout-editor: @playwright/test v1.64.1
+- 35a2e90 mobile-putout-editor: superc8 v12.7.0
+- 505db50 mobile-putout-editor: @testing-library/dom v10.4.2
+- ab61405 mobile-putout-editor: happy-dom v21.0.4
+- caaccd3 mobile-putout-editor: @supertape/loader-css v1.0.0
+- 1294e49 mobile-putout-editor: @supertape/loader-jsx v1.0.5
+- cec75b7 mobile-putout-editor: @supertape/loader-dom v1.0.1
+- 60cc0d8 mobile-putout-editor: supertape v13.6.2
+
 2026.08.11, v1.25.4
 
 fix:
