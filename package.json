@@ -82,6 +82,7 @@
     "@rspack/core": "^2.1.9",
     "@rspack/dev-server": "^2.2.0",
     "@rspack/plugin-react-refresh": "^2.0.2",
+    "@supertape/loader-css": "^1.0.0",
     "@supertape/loader-dom": "^1.0.1",
     "@supertape/loader-jsx": "^1.0.5",
     "eslint": "^10.0.1",
