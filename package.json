@@ -19,6 +19,7 @@
     "@putout/plugin-convert-const-to-let": "^5.0.1",
     "@putout/plugin-declare": "^8.4.0",
     "@putout/plugin-declare-before-reference": "^10.5.0",
+    "@putout/plugin-nodejs": "^21.14.0",
     "@putout/plugin-putout": "^29.36.0",
     "@replit/codemirror-vim": "^6.2.1",
     "@svgr/webpack": "^8.1.0",
