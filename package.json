@@ -67,6 +67,11 @@
     "start": "madrun start",
     "build": "madrun build",
     "test": "madrun test",
+    "test:one": "madrun test:one",
+    "coverage": "madrun coverage",
+    "build:e2e": "madrun build:e2e",
+    "test:e2e": "madrun test:e2e",
+    "report:e2e": "madrun report:e2e",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint"
   },
