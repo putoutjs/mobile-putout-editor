@@ -96,6 +96,11 @@ module.exports = (webpackEnv) => {
             // `web` extension prefixes have been added for better support
             alias: {
                 'react-native': 'react-native-web',
+                // Putout plugins import `putout`: resolve it to the browser bundle
+                'putout$': '@putout/bundle',
+                'path$': 'path-browserify',
+                'process$': path.resolve(__dirname, 'shims/process.js'),
+                'module$': path.resolve(__dirname, 'shims/module.js'),
                 // Allows for better profiling with ReactDevTools
                 ...modules.webpackAliases || {},
             },
@@ -235,6 +240,10 @@ module.exports = (webpackEnv) => {
             ],
         },
         plugins: [
+            new rspack.NormalModuleReplacementPlugin(/get-rule\.cjs$/, path.resolve(__dirname, 'shims/get-rule.js')),
+            new rspack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
+                resource.request = resource.request.replace(/^node:/, '');
+            }),
             new rspack.HtmlRspackPlugin({
                 inject: true,
                 template: paths.appHtml,
