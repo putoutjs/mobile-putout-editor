@@ -1,0 +1,18 @@
+{
+    "temp-dir": ".nyc_output",
+    "report-dir": "coverage-e2e",
+    "all": true,
+    "include": ["src/**"],
+    "exclude": [
+        "**/*.spec.*",
+        "src/Gist/gist.js",
+        "src/Gist/parse.js",
+        "src/reportWebVitals.js",
+        "src/setupTests.js"
+    ],
+    "check-coverage": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
+}
