@@ -94,6 +94,7 @@
     "eslint-plugin-react": "^7.37.5",
     "happy-dom": "^21.0.4",
     "madrun": "^13.0.0",
+    "nyc": "^18.0.0",
     "once": "^1.4.0",
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.47",
