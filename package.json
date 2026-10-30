@@ -97,6 +97,7 @@
     "postcss": "^8.4.47",
     "postcss-loader": "^8.1.1",
     "putout": "^42.0.15",
+    "superc8": "^12.7.0",
     "supertape": "13.6.2",
     "wraptile": "^3.0.0"
   },
