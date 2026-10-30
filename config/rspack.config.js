@@ -72,7 +72,10 @@ module.exports = (webpackEnv) => {
         },
         cache: {
             type: 'persistent',
-            version: createEnvironmentHash(env.raw),
+            version: createEnvironmentHash({
+                ...env.raw,
+                E2E_COVERAGE: process.env.E2E_COVERAGE,
+            }),
             directory: paths.appWebpackCache,
             buildDependencies: [__filename, paths.appPackageJson].filter(Boolean),
         },
@@ -135,9 +138,13 @@ module.exports = (webpackEnv) => {
                             loader: require.resolve('babel-loader'),
                             options: {
                                 plugins: [
+                                    process.env.E2E_COVERAGE && ['babel-plugin-istanbul', {
+                                        cwd: paths.appPath,
+                                        include: ['src/**'],
+                                    }],
                                     ['babel-plugin-react-compiler', {target: '19'}],
                                     '@babel/plugin-syntax-jsx',
-                                ],
+                                ].filter(Boolean),
                                 // Don't let babel transform syntax — swc handles that.
                                 presets: [],
                                 babelrc: false,
