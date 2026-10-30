@@ -15,3 +15,15 @@ test('vim: Escape turns on vim mode', async ({page}) => {
     
     await expect(page.locator('.cm-fat-cursor').first()).toBeVisible();
 });
+
+for (const name of ['Source', 'AST', 'Cooked']) {
+    test(`vim: the ${name} tab renders its editor in vim mode`, async ({page}) => {
+        await page.goto('/');
+        await page.locator('.cm-content').first().click();
+        await page.keyboard.press('Escape');
+        await page.keyboard.press('Escape');
+        await page.getByRole('tab', {name}).click();
+        
+        await expect(page.locator('.cm-editor').first()).toBeVisible();
+    });
+}
