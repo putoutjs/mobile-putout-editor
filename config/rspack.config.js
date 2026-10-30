@@ -264,6 +264,12 @@ module.exports = (webpackEnv) => {
                 contextRegExp: /moment$/,
             }),
         ].filter(Boolean),
+        // `simpleImport` in @putout/bundle imports a plugin by a variable name;
+        // the app bundles every plugin with static `import()`, so the warning is noise.
+        ignoreWarnings: [{
+            module: /(@putout[\\/]bundle|simple-import\.js)/,
+            message: /the request of a dependency is an expression/,
+        }],
         performance: false,
     };
 };
